@@ -1,0 +1,170 @@
+
+
+.modal{
+    position : fixed;
+    top : 0;
+    left : 0;
+    display : none;
+    justify-content: center;
+    align-items: center;
+    width : 100%;
+    height : 100vh;
+    background-color: #373636d4;
+    z-index : 105;
+    @media screen and (max-width : 990px){
+        padding : 2vh 30px;
+    }
+
+    &_form{
+        position : relative;
+        display : flex;
+        flex-direction: column;
+        gap : 7vh;
+        background-color: $blanc;
+        padding : 2.5vw; 
+        border-radius : 20px;
+        height : fit-content;
+        @media screen and (max-width : 990px){
+            width : 100%;
+            padding : 5vh 30px;
+        }
+
+        &-close{
+            position : absolute;
+            top : 2.5vh;
+            right : 2vw;
+            width : 3vw;
+            height : 3vw;
+            display : flex;
+            justify-content: center;
+            align-items: center;
+            border-radius : 100%;
+            transition : .5s ease;
+            will-change : transform;
+            cursor : pointer;
+
+            @media screen and (max-width : 990px){
+                width : 15vw;
+                height : 15vw;
+            }
+    
+            &-barre{
+                position : absolute;           
+                width : 1.5vw;
+                height : 2px;
+                background-color: $noir;
+                transition : .3s ease;
+                @media screen and (max-width : 990px){
+                    width : 5vw;
+                }
+    
+                &--1 {
+                    top : 50%;
+                    left : 50%;
+                    transform : translate(-50%, -50%) rotate(45deg);
+                }
+    
+                &--2 {
+                    top : 50%;
+                    left : 50%;
+                    transform : translate(-50%, -50%) rotate(-45deg);
+                }
+            }
+    
+            &:hover{
+                background-color: $noir;
+                .modal_form-close-barre{
+                    background-color : $blanc;
+                }
+            }
+        }
+
+        h2{
+            font-size : 1.5vw;   
+            @media screen and (max-width : 990px){
+                font-size : 6vw;
+                width : calc(100% - 3.5vw);
+            }
+        }
+
+        &-fieldset{
+            display : flex;
+            flex-direction: column;
+            gap : 3.5vh;
+
+            fieldset{
+                display : flex;
+                flex-direction: column;
+                gap : 1vh;
+
+                label{
+                    font-family: "Ysabeau Office";
+                    line-height : 1.2;
+                    font-size: 1.1vw;
+                    font-weight : 600;
+                    color : $noir;
+                    padding-left : 15px;
+                    @media screen and (max-width : 990px){
+                        font-size: 5vw;
+                    }
+                }
+
+                #title, #description, #tag-select, option{
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    width : 30vw;
+                    font-size : 1.1vw;
+                    padding : 0 15px;
+                    min-height : 6vh;
+                    border : 1px solid $noir;
+                    border-radius : 100vmax;
+                    font-family : "Ysabeau Office";
+                    @media screen and (max-width : 990px){
+                        width : 100%;
+                        font-size : 5vw;
+                        padding : 0 20px;
+                        min-height : 5vh;
+                    }
+                }
+
+                #file{
+                    font-size : 1.1vw;
+                    padding : 5px;
+                    border-radius : 5px;
+                    font-family : "Ysabeau Office";
+                    @media screen and (max-width : 990px){
+                        font-size: 5vw;
+                    }
+                }
+
+                #description{
+                    min-height : 15vh;
+                    resize: none;
+                    padding : 10px 15px;
+                    border-radius : 15px !important;
+                    @media screen and (max-width : 990px){
+                        min-height : 15vh;
+                    }
+                }
+            }
+        }
+
+        &-bouton{
+            align-self: flex-end;
+
+            .bouton{
+                border-width : 1px;
+                text-transform: none;
+                min-height : 6vh;
+                @media screen and (max-width:990px){
+                    font-size: 5vw;
+                    min-height : 5vh;
+                } 
+            }
+        }
+    }
+
+    &.active{
+        display : flex;
+    }
+}
