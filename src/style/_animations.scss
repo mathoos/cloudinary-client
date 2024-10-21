@@ -1,0 +1,27 @@
+@keyframes infiniteRotation {
+    100%{
+        transform : rotate(360deg)
+    }
+}
+
+
+@keyframes marquee {
+    100%{
+        transform : translate(-100%, 0)
+    }
+}
+
+
+@keyframes slideTop{
+    to{
+        transform : translateY(0);
+        opacity : 1;
+    }
+}
+
+
+@keyframes curtain{
+    to{
+        height : 0;
+    }
+}

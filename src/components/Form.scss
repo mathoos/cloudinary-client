@@ -1,4 +1,4 @@
-
+@import "../style.scss";
 
 .modal{
     position : fixed;
@@ -23,7 +23,7 @@
         background-color: $blanc;
         padding : 2.5vw; 
         border-radius : 20px;
-        height : fit-content;
+        height : fit-content;@import "../style.scss";
         @media screen and (max-width : 990px){
             width : 100%;
             padding : 5vh 30px;
