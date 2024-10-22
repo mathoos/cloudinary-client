@@ -52,7 +52,7 @@
                 position : absolute;           
                 width : 1.5vw;
                 height : 2px;
-                background-color: $noir;
+                background-color: $violet;
                 transition : .3s ease;
                 @media screen and (max-width : 990px){
                     width : 5vw;
@@ -72,7 +72,7 @@
             }
     
             &:hover{
-                background-color: $noir;
+                background-color: $violet;
                 .modal_form-close-barre{
                     background-color : $blanc;
                 }
@@ -102,7 +102,7 @@
                     line-height : 1.2;
                     font-size: 1.1vw;
                     font-weight : 600;
-                    color : $noir;
+                    color : $violet;
                     padding-left : 15px;
                     @media screen and (max-width : 990px){
                         font-size: 5vw;
@@ -116,7 +116,7 @@
                     font-size : 1.1vw;
                     padding : 0 15px;
                     min-height : 6vh;
-                    border : 1px solid $noir;
+                    border : 1px solid $violet;
                     border-radius : 100vmax;
                     font-family : "Ysabeau Office";
                     @media screen and (max-width : 990px){

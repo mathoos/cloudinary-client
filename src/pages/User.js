@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import Form from '../components/Form';
 import Navbar from '../components/Navbar';
+
 import './User.scss';
 
 const User = () => {
@@ -51,7 +52,7 @@ const User = () => {
 
     useEffect(() => {
         if (!token) {
-            navigate('/login');
+            navigate('/');
         }
         const fetchData = async () => {
             try {

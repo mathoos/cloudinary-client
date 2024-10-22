@@ -1,10 +1,10 @@
 // // Prod
-const API_BASE_AUTH = "https://cloudinary-serveur.onrender.com/api/auth";
-const API_BASE_STUFF = "https://cloudinary-serveur.onrender.com/api/stuff";
+// const API_BASE_AUTH = "https://cloudinary-serveur.onrender.com/api/auth";
+// const API_BASE_STUFF = "https://cloudinary-serveur.onrender.com/api/stuff";
 
 //Local
-// const API_BASE_AUTH = "http://localhost:3000/api/auth";
-// const API_BASE_STUFF = "http://localhost:3000/api/stuff";
+const API_BASE_AUTH = "http://localhost:3000/api/auth";
+const API_BASE_STUFF = "http://localhost:3000/api/stuff";
 
 
 export const signupUser = async (email, password) => {
@@ -46,13 +46,20 @@ export const loginUser = async (email, password) => {
                 password: password,
             }),
         });
+
         const responseData = await response.json();
+
+        // Vérifie le statut de la réponse et lève une erreur si ce n'est pas 200 OK
+        if (!response.ok) {
+            throw new Error(responseData.error || "Une erreur est survenue lors de la connexion");
+        }
+
         return responseData;
     } catch (error) {
-        console.error("Erreur lors de la requête de connexion :", error);
-        throw error;
+        console.error("Erreur lors de la requête de connexion :", error.message);
+        throw error;  // Propager l'erreur
     }
-}
+};
 
 export const getAllStuff = async () => {
     try {

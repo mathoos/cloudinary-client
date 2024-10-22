@@ -35,38 +35,38 @@
 
     &_blanc{
         background-color: $blanc;
-        border-color : $vert;
-        color : $vert;
+        border-color : $violet;
+        color : $violet;
         &::after{
-            background-color: $vert;
+            background-color: $violet;
         }
     }
 
     &_vert{
-        border-color : $vert;
-        color : $vert;
+        border-color : $violet;
+        color : $violet;
         &::after{
-            background-color: $vert;
+            background-color: $violet;
         }
     }
 
     &_noir{
-        border-color : $noir;
-        color : $noir;
+        border-color : $violet;
+        color : $violet;
         &::after{
-            background-color: $noir;
+            background-color: $violet;
         }
     }
 
     &_invertNoir{
         border-color : none;
         color : $blanc;
-        background-color: $noir;
+        background-color: $violet;
         &::after{
             background-color: $blanc;
         }
         &:hover{
-            color : $noir;
+            color : $violet;
         }
     }
 

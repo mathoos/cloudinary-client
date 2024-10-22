@@ -1,0 +1,122 @@
+@import "../style.scss";
+
+.home{
+    display : flex;
+    width : 100%;
+    height : 100vh;
+
+    &_title{
+        display : flex;
+        flex-direction: column;
+        justify-content: center;
+        gap : 5vh;
+        width : 45%;
+        height : 100%;
+        background-color: $violet;
+        padding : 0 6.25vw;
+
+        p{
+            color : $blanc;
+            font-size: 1.4vw;
+        }
+
+        &-logo{
+            img{
+                width : 4vw;
+                height : auto;
+            }
+        }
+    }
+        
+    &_login{
+        position : relative;
+        display : flex;
+        flex-direction: column;
+        justify-content: center;
+        width : 55%;
+        height : 100%;
+        padding : 10vh 10vw;  
+        background-color: $violet-pale;
+
+        &-form{
+            display : flex;
+            flex-direction: column;
+            gap : 5vh;
+            width : 100%;
+
+            @media screen and (max-width : 990px){
+                gap : 5vh;
+                width : 100%;
+            }
+    
+            &--fieldset{
+                position : relative;
+                display : flex;
+                flex-direction: column;
+                gap : 5vh;
+                @media screen and (max-width : 990px){
+                    gap : 2.5vh;
+                }
+    
+                fieldset{
+                    display : flex;
+                    flex-direction: column;
+                    gap : 1vh;
+                    min-height : 2vw;
+                    @media screen and (max-width : 990px){
+                        gap : 1vh;
+                        min-height : auto;
+                    }
+    
+                    label{
+                        font-weight : 600;
+                        padding-left : 15px;
+                        color : $violet;
+                        @media screen and (max-width : 990px){
+                            font-size: 5vw;
+                            padding-left : 20px;
+                        }
+                    }
+    
+                    #email, #password{
+                        padding : 0 15px;
+                        min-height : 6vh;
+                        border : 2px solid $violet;
+                        border-radius : 100vmax;
+                        background-color: $blanc;
+                        @media screen and (max-width : 990px){
+                            font-size : 5vw;
+                            padding : 0 20px;
+                            min-height : 5vh;
+                        }
+                    }    
+                }
+    
+                .error-message{
+                    font-size : .9vw;
+                    font-weight : 600;
+                    padding-left : 15px;
+                    color : red;
+                }
+            }
+    
+            &--bouton{
+    
+                .bouton{
+                    border-width : 1px;
+                    text-transform: none;
+                    min-height : 6vh;
+                    @media screen and (max-width:990px){
+                        font-size: 5vw;
+                    } 
+                }
+            }
+        }
+
+        &-create{
+            position : absolute;
+            bottom : 10vh;
+            right : 10vw;
+        }
+    }
+}

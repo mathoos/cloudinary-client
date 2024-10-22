@@ -5,7 +5,7 @@ import { clearToken } from "../utilities/Slice";
 import { useNavigate } from "react-router-dom";
 import './Navbar.scss';
 
-const Navbar = ({ isUserPage }) => {
+const Navbar = ({ isUserPage , isHomePage }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const Navbar = ({ isUserPage }) => {
         try {
             dispatch(clearToken());
             localStorage.removeItem('token');
-            navigate("/login");
+            navigate("/");
         } 
         catch (error) {
             console.error("Une erreur s'est produite lors de la déconnexion :", error);
@@ -29,9 +29,11 @@ const Navbar = ({ isUserPage }) => {
             </Link>
 
             <div className="nav_links">
-                {isUserPage ? (
+                {isUserPage && (
                     <button className="nav_links-link" onClick={handleLogout}>Déconnexion</button>
-                ) : (
+                )}
+                
+                {isHomePage && (
                     <>
                         <a href="#entreprise" className="nav_links-link">L'entreprise</a>
                         <a href="#prestations" className="nav_links-link">Prestations</a>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupUser } from "../utilities/Server"; 
-import './Login.scss';
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -17,7 +16,7 @@ function Signup() {
             const response = await signupUser(email, password); // Appelle la fonction signup
             console.log(response); 
             setMessage("Inscription réussie !");
-            navigate("/login"); // Redirection vers la page de connexion après le succès
+            navigate("/"); // Redirection vers la page de connexion après le succès
         } 
         catch (error) {
             console.log(error.response.data); 
