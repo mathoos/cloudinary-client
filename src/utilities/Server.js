@@ -1,10 +1,10 @@
 // // Prod
-// const API_BASE_AUTH = "https://cloudinary-serveur.onrender.com/api/auth";
-// const API_BASE_STUFF = "https://cloudinary-serveur.onrender.com/api/stuff";
+const API_BASE_AUTH = "https://cloudinary-serveur.onrender.com/api/auth";
+const API_BASE_STUFF = "https://cloudinary-serveur.onrender.com/api/stuff";
 
 //Local
-const API_BASE_AUTH = "http://localhost:3000/api/auth";
-const API_BASE_STUFF = "http://localhost:3000/api/stuff";
+// const API_BASE_AUTH = "http://localhost:3000/api/auth";
+// const API_BASE_STUFF = "http://localhost:3000/api/stuff";
 
 
 export const signupUser = async (email, password) => {
