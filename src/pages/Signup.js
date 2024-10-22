@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupUser } from "../utilities/Server";
-import Navbar from '../components/Navbar';
 import Logo from "../img/logo.svg";
 
 import './Home.scss';
@@ -37,7 +36,6 @@ function Signup() {
 
     return (
         <div className="home">           
-            <Navbar/>
 
             <div className="home_title">
                 <h1>Lorem Ipsum is simply dummy text.</h1>

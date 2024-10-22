@@ -24,9 +24,6 @@ const Navbar = ({ isUserPage , isHomePage }) => {
     return(   
               
         <nav className="nav">
-            <Link to="/" className="nav_logo">
-                
-            </Link>
 
             <div className="nav_links">
                 {isUserPage && (

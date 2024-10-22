@@ -72,7 +72,7 @@ const User = () => {
         <div className="user">
             <Navbar isUserPage={true}/>
             <div className="container">
-                <h1>Mes photos</h1>
+                <h2>Mes photos</h2>
                 <div className="container_buttons">
                     <button className="bouton bouton_noir" onClick={handleAddButtonClick}>Ajouter</button>
                 </div>

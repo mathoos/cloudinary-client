@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../utilities/Server";
 import { setToken } from "../utilities/Slice";
-import Navbar from '../components/Navbar';
 import Logo from "../img/logo.svg";
 
 import './Home.scss';
@@ -38,7 +37,6 @@ function Home() {
 
     return (
         <div className="home">           
-            <Navbar/>
 
             <div className="home_title">
                 <h1>Lorem Ipsum is simply dummy text.</h1>
