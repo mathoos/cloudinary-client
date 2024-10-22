@@ -62,13 +62,10 @@ function Home() {
                         <fieldset>
                             <label htmlFor="password">Mot de passe</label>
                             <input type="password" id="password" name="password" required onChange={(e) => setPassword(e.target.value)}/>
-                            {message && (
-                            
+                            {message && ( 
                                 <p className="error-message">{message}</p>
-                            
-                        )}
+                            )}
                         </fieldset>
-                              
                     </div>
                     <div className="home_login-form--bouton">
                         <button className="bouton bouton_invertNoir" type="submit">Connexion</button>
