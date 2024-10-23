@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllStuff, createObject } from "../utilities/Server"; 
-import { useNavigate } from "react-router-dom";
+import { getAllStuff, createObject , getStuffByUser} from "../utilities/Server"; 
+import { useNavigate, useParams } from "react-router-dom";
 
 import Form from '../components/Form';
 import Navbar from '../components/Navbar';
@@ -11,6 +11,7 @@ import './User.scss';
 const User = () => {
     const token = useSelector((state) => state.user.token);
     const navigate = useNavigate();
+    const { id } = useParams(); // Récupération de l'id de l'URL
     const [things, setThings] = useState([]);
     const [modalActive, setModalActive] = useState(false); 
 
@@ -42,7 +43,7 @@ const User = () => {
 
     const fetchData = async () => {
         try {
-            const data = await getAllStuff();
+            const data = await getStuffByUser(id, token); // Récupérer les objets pour cet utilisateur
             setThings(data); 
         } 
         catch (error) {
@@ -54,17 +55,8 @@ const User = () => {
         if (!token) {
             navigate('/');
         }
-        const fetchData = async () => {
-            try {
-                const data = await getAllStuff();
-                setThings(data); 
-            } 
-            catch (error) {
-                console.error("Une erreur s'est produite lors de la récupération des objets :", error);
-            }
-        };
-        fetchData();
-    }, [token, navigate]); 
+        fetchData(); // Appel de fetchData ici
+    }, [token, id, navigate]); 
 
     
 

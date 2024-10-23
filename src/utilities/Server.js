@@ -1,10 +1,10 @@
 // // Prod
-const API_BASE_AUTH = "https://cloudinary-serveur.onrender.com/api/auth";
-const API_BASE_STUFF = "https://cloudinary-serveur.onrender.com/api/stuff";
+// const API_BASE_AUTH = "https://cloudinary-serveur.onrender.com/api/auth";
+// const API_BASE_STUFF = "https://cloudinary-serveur.onrender.com/api/stuff";
 
 //Local
-// const API_BASE_AUTH = "http://localhost:3000/api/auth";
-// const API_BASE_STUFF = "http://localhost:3000/api/stuff";
+const API_BASE_AUTH = "http://localhost:3000/api/auth";
+const API_BASE_STUFF = "http://localhost:3000/api/stuff";
 
 
 export const signupUser = async (email, password) => {
@@ -65,6 +65,23 @@ export const getAllStuff = async () => {
     try {
         const response = await fetch(`${API_BASE_STUFF}`, {
             method: "GET",
+        });
+        if (!response.ok) {
+            throw new Error('La requête a échoué');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw new Error(`Une erreur s'est produite lors de la récupération des objets : ${error.message}`);
+    }
+};
+
+export const getStuffByUser = async (userId, token) => {
+    try {
+        const response = await fetch(`${API_BASE_STUFF}/user/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         });
         if (!response.ok) {
             throw new Error('La requête a échoué');
