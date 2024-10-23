@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../utilities/Server";
 import { setToken } from "../utilities/Slice";
 import Logo from "../img/logo.svg";
+import MailIcon from "../img/mail.svg";
+import PasswordIcon from "../img/password.svg";
 
 import './Home.scss';
 
@@ -14,24 +16,40 @@ function Home() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const [emailError, setEmailError] = useState(false);  // Erreur email
+    const [passwordError, setPasswordError] = useState(false);  // Erreur mot de passe
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     let handleSubmit = async (e) => {
         e.preventDefault();
-    
+
+        // Réinitialise les erreurs avant chaque tentative de connexion
+        setEmailError(false);
+        setPasswordError(false);
+        setMessage("");
+
         try {
             const response = await loginUser(email, password);
             const token = response.token; 
             localStorage.setItem('token', token);
-    
+
             dispatch(setToken(token));
             navigate("/user");
         } 
         catch (error) {
-            // Affiche le message d'erreur capturé depuis le serveur
-            setMessage(error.message || "L'authentification a échouée");
+            // Capture l'erreur renvoyée par le backend
+            const errorMessage = error.message || "L'authentification a échouée";
+
+            setMessage(errorMessage);
+
+            // Vérifie les types d'erreurs pour ajuster les inputs
+            if (errorMessage.includes("Utilisateur non trouvé")) {
+                setEmailError(true);
+            } else if (errorMessage.includes("Mot de passe incorrect")) {
+                setPasswordError(true);
+            }
         }
     };
 
@@ -55,18 +73,30 @@ function Home() {
                     <div className="home_login-form--fieldset">
                         <fieldset>
                             <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" required onChange={(e) => setEmail(e.target.value)}/>
+                            <div className="input-container">
+                                <input className={`input-field ${emailError ? 'error' : ''}`} type="email" id="email" name="email" required onChange={(e) => setEmail(e.target.value)}/>
+                                <figure className="icon">
+                                    <img src={MailIcon} alt="Mail"/>
+                                </figure>
+                            </div>
+                            
                         </fieldset>
                         <fieldset>
                             <label htmlFor="password">Mot de passe</label>
-                            <input type="password" id="password" name="password" required onChange={(e) => setPassword(e.target.value)}/>
+                            <div className="input-container">
+                                <input className={`input-field ${passwordError ? 'error' : ''}`} type="password" id="password" name="password" required onChange={(e) => setPassword(e.target.value)}/>
+                                <figure className="icon">
+                                    <img src={PasswordIcon} alt="Password"/>
+                                </figure>
+                            </div>
+                            
                             {message && ( 
                                 <p className="error-message">{message}</p>
                             )}
                         </fieldset>
                     </div>
                     <div className="home_login-form--bouton">
-                        <button className="bouton bouton_invertNoir" type="submit">Connexion</button>
+                        <button className="bouton" type="submit">Connexion</button>
                     </div>  
                 </form>
                 <div className="home_login-create">

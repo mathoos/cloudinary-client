@@ -4,80 +4,20 @@
     justify-content: center;
     align-items: center;
     width : fit-content;
-    min-height : 7vh;
+    min-height : 6vh;
     padding : 0 2vw;
-    border-radius: 100vmax; 
-    border-width : 2px;
-    border-style: solid;
-    background-color: transparent;
-    font-family : "Ysabeau Office";
-    font-size : 1.1vw;
     font-weight : 600;
-    line-height : 1;
-    text-transform: uppercase;
     cursor : pointer;
-    overflow: hidden;
+    border-radius: 100vmax; 
+    border : 2px solid transparent;
+    background-color: $violet;
+    color : $blanc;
     transition : .3s ease;
     z-index : 1;
 
-    @media screen and (max-width:990px){
-        font-size: 5vw;
-        padding : 0 8vw;    
-        min-height : 6.5vh;
-    }  
-
     &:hover{
-        color : $blanc;
-        &::after{
-            height : 100%;
-        }      
-    }
-
-    &_blanc{
-        background-color: $blanc;
-        border-color : $violet;
         color : $violet;
-        &::after{
-            background-color: $violet;
-        }
-    }
-
-    &_vert{
-        border-color : $violet;
-        color : $violet;
-        &::after{
-            background-color: $violet;
-        }
-    }
-
-    &_noir{
-        border-color : $violet;
-        color : $violet;
-        &::after{
-            background-color: $violet;
-        }
-    }
-
-    &_invertNoir{
-        border-color : none;
-        color : $blanc;
-        background-color: $violet;
-        &::after{
-            background-color: $blanc;
-        }
-        &:hover{
-            color : $violet;
-        }
-    }
-
-    &::after{
-        position : absolute;
-        content : "";
-        bottom : 0;
-        left : 0;
-        width : 100%;
-        height : 0;
-        transition : .3s ease;
-        z-index : -1;
+        background-color: transparent;
+        border : 2px solid $violet;
     }
 }
