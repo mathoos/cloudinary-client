@@ -47,7 +47,8 @@ function Home() {
             // Vérifie les types d'erreurs pour ajuster les inputs
             if (errorMessage.includes("Utilisateur non trouvé")) {
                 setEmailError(true);
-            } else if (errorMessage.includes("Mot de passe incorrect")) {
+            } 
+            else if (errorMessage.includes("Mot de passe incorrect")) {
                 setPasswordError(true);
             }
         }
@@ -68,7 +69,7 @@ function Home() {
             </div>
 
             <div className="home_login">
-                <form className="home_login-form" id="loginForm" onSubmit={handleSubmit}>
+                <form className="home_login-form" onSubmit={handleSubmit}>
                     <h2>Se connecter</h2>
                     <div className="home_login-form--fieldset">
                         <fieldset>
