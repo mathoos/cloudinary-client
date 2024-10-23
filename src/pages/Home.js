@@ -33,10 +33,11 @@ function Home() {
         try {
             const response = await loginUser(email, password);
             const token = response.token; 
+            const userId = response.userId; 
             localStorage.setItem('token', token);
 
             dispatch(setToken(token));
-            navigate("/user");
+            navigate(`/user/${userId}`);
         } 
         catch (error) {
             // Capture l'erreur renvoyée par le backend
