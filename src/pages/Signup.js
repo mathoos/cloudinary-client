@@ -11,6 +11,9 @@ function Signup() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [nom, setNom] = useState("");            // Nouveau state pour le nom
+    const [prenom, setPrenom] = useState("");       // Nouveau state pour le prénom
+    const [genre, setGenre] = useState("homme");    // Nouveau state pour le genre
 
     const [emailError, setEmailError] = useState(false);  // Erreur email
     const [passwordError, setPasswordError] = useState(false);  // Erreur mot de passe
@@ -47,7 +50,8 @@ function Signup() {
         }
 
         try {
-            const response = await signupUser(email, password);
+            // Envoie les champs supplémentaires au backend
+            const response = await signupUser(email, password, nom, prenom, genre);
             if (response.message === 'Utilisateur créé !') {
                 setMessage("Inscription réussie. Redirection vers la page de connexion...");
                 
@@ -82,6 +86,26 @@ function Signup() {
                 <form className="home_login-form" onSubmit={handleSubmit}>
                     <h2>Créer un compte</h2>
                     <div className="home_login-form--fieldset">
+                         {/* Nouveau champ pour le nom */}
+                         <fieldset>
+                            <label htmlFor="nom">Nom</label>
+                            <input type="text" id="nom" name="nom" required onChange={(e) => setNom(e.target.value)} />
+                        </fieldset>
+
+                        {/* Nouveau champ pour le prénom */}
+                        <fieldset>
+                            <label htmlFor="prenom">Prénom</label>
+                            <input type="text" id="prenom" name="prenom" required onChange={(e) => setPrenom(e.target.value)} />
+                        </fieldset>
+
+                        {/* Nouveau champ pour le genre */}
+                        <fieldset>
+                            <label htmlFor="genre">Genre</label>
+                            <select id="genre" name="genre" onChange={(e) => setGenre(e.target.value)}>
+                                <option value="homme">Homme</option>
+                                <option value="femme">Femme</option>
+                            </select>
+                        </fieldset>
                         <fieldset>
                             <label htmlFor="email">Email</label>
                             <div className="input-container">

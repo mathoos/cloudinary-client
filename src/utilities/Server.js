@@ -7,7 +7,7 @@ const API_BASE_AUTH = "http://localhost:3000/api/auth";
 const API_BASE_STUFF = "http://localhost:3000/api/stuff";
 
 
-export const signupUser = async (email, password) => {
+export const signupUser = async (email, password, nom, prenom, genre) => {
     try {
         const response = await fetch(`${API_BASE_AUTH}/signup`, {
             method: "POST",
@@ -17,12 +17,16 @@ export const signupUser = async (email, password) => {
             body: JSON.stringify({
                 email: email,
                 password: password,
+                nom: nom,
+                prenom: prenom,
+                genre: genre
             }),
         });
 
         const responseData = await response.json();
 
         if (!response.ok) {
+            console.error("Erreur backend:", responseData);  // Affichez l'erreur exacte du backend
             throw new Error(responseData.message || "L'inscription a échoué");
         }
 
