@@ -65,6 +65,27 @@ export const loginUser = async (email, password) => {
     }
 };
 
+export const getUserInfo = async (token) => {
+    try {
+        const response = await fetch(`${API_BASE_AUTH}/me`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('La requête a échoué');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw new Error(`Une erreur s'est produite lors de la récupération des informations de l'utilisateur : ${error.message}`);
+    }
+};
+
+
 export const getAllStuff = async () => {
     try {
         const response = await fetch(`${API_BASE_STUFF}`, {

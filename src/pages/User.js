@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { createObject , getStuffByUser} from "../utilities/Server"; 
+import { createObject , getStuffByUser , getUserInfo } from "../utilities/Server"; 
 import { useNavigate, useParams } from "react-router-dom";
 
 import Form from '../components/Form';
@@ -14,6 +14,7 @@ const User = () => {
     const { id } = useParams(); // Récupération de l'id de l'URL
     const [things, setThings] = useState([]);
     const [modalActive, setModalActive] = useState(false); 
+    const [userInfo, setUserInfo] = useState({ nom: "", prenom: "" });
 
     const closeModal = () => {
         setModalActive(false);
@@ -51,11 +52,21 @@ const User = () => {
         }
     };
 
+    const fetchUserInfo = async () => {
+        try {
+            const userData = await getUserInfo(token);
+            setUserInfo(userData); // Stocke les informations de l'utilisateur
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
+
     useEffect(() => {
         if (!token) {
             navigate('/');
         }
         fetchData(); // Appel de fetchData ici
+        fetchUserInfo(); 
     }, [token, id, navigate]); 
 
     
@@ -64,7 +75,7 @@ const User = () => {
         <div className="user">
             <Navbar isUserPage={true}/>
             <div className="container">
-                <h2>Mes photos</h2>
+                <h2>Bonjour {userInfo.prenom} {userInfo.nom}</h2> {/* Affiche le nom et le prénom */}
                 <div className="container_buttons">
                     <button className="bouton bouton_noir" onClick={handleAddButtonClick}>Ajouter</button>
                 </div>
