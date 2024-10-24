@@ -85,6 +85,28 @@ export const getUserInfo = async (token) => {
     }
 };
 
+export const updateUserInfo = async (token, userInfo) => {
+    try {
+        const response = await fetch(`${API_BASE_AUTH}/me`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(userInfo)
+        });
+
+        if (!response.ok) {
+            throw new Error('La mise à jour des informations a échoué');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw new Error(`Erreur lors de la mise à jour des informations : ${error.message}`);
+    }
+};
+
 
 export const getAllStuff = async () => {
     try {

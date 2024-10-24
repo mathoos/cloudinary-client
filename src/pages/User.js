@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { createObject , getStuffByUser , getUserInfo } from "../utilities/Server"; 
+import { createObject , getStuffByUser , getUserInfo , updateUserInfo } from "../utilities/Server"; 
 import { useNavigate, useParams } from "react-router-dom";
 
 import Form from '../components/Form';
@@ -15,6 +15,7 @@ const User = () => {
     const [things, setThings] = useState([]);
     const [modalActive, setModalActive] = useState(false); 
     const [userInfo, setUserInfo] = useState({ nom: "", prenom: "" });
+    const [isEditing, setIsEditing] = useState(false);
 
     const closeModal = () => {
         setModalActive(false);
@@ -61,6 +62,25 @@ const User = () => {
         }
     };
 
+    const handleEditButtonClick = () => {
+        setIsEditing(true); // Active l'édition
+    };
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await updateUserInfo(token, userInfo); // Appelle la fonction pour mettre à jour l'utilisateur
+            setIsEditing(false); // Désactive l'édition après la mise à jour
+        } catch (error) {
+            console.error("Erreur lors de la mise à jour des informations :", error);
+        }
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setUserInfo({ ...userInfo, [name]: value }); // Met à jour les valeurs dans le state
+    };
+
     useEffect(() => {
         if (!token) {
             navigate('/');
@@ -76,6 +96,50 @@ const User = () => {
             <Navbar isUserPage={true}/>
             <div className="container">
                 <h2>Bonjour {userInfo.prenom} {userInfo.nom}</h2> {/* Affiche le nom et le prénom */}
+                {!isEditing ? (
+                    <button onClick={handleEditButtonClick}>Modifier mes informations</button>
+                ) : (
+                    <form onSubmit={handleFormSubmit}>
+                        <div>
+                            <label htmlFor="nom">Nom</label>
+                            <input
+                                type="text"
+                                id="nom"
+                                name="nom"
+                                value={userInfo.nom}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="prenom">Prénom</label>
+                            <input
+                                type="text"
+                                id="prenom"
+                                name="prenom"
+                                value={userInfo.prenom}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="genre">Genre</label>
+                            <select
+                                id="genre"
+                                name="genre"
+                                value={userInfo.genre}
+                                onChange={handleInputChange}
+                                required
+                            >
+                                <option value="">Choisir un genre</option>
+                                <option value="Homme">Homme</option>
+                                <option value="Femme">Femme</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <button type="submit">Enregistrer</button>
+                    </form>
+                )}
                 <div className="container_buttons">
                     <button className="bouton bouton_noir" onClick={handleAddButtonClick}>Ajouter</button>
                 </div>
