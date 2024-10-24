@@ -55,7 +55,7 @@ function Image() {
     const handleDeleteButtonClick = async () => {
         try {
             await deleteObject(objectId, token);
-            navigate("/user");
+            navigate(`/user/${objectDetails.userId}`);
         } 
         catch (error) {
             console.error("Une erreur s'est produite lors de la suppression de l'objet :", error);
