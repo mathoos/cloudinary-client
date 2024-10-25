@@ -95,7 +95,7 @@ const User = () => {
         <div className="user">
             <Navbar isUserPage={true}/>
             <div className="container">
-                <h2>Bonjour {userInfo.prenom} {userInfo.nom}</h2> {/* Affiche le nom et le prénom */}
+                <h2>Bonjour {userInfo.prenom}</h2>
                 {!isEditing ? (
                     <button onClick={handleEditButtonClick}>Modifier mes informations</button>
                 ) : (
@@ -141,7 +141,7 @@ const User = () => {
                     </form>
                 )}
                 <div className="container_buttons">
-                    <button className="bouton bouton_noir" onClick={handleAddButtonClick}>Ajouter</button>
+                    <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>
                 </div>
                 <div className="container_images">
                     {things.map(thing => (
