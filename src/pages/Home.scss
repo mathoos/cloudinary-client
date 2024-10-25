@@ -12,7 +12,7 @@
         gap : 5vh;
         width : 45%;
         height : 100%;
-        background-color: $violet;
+        background-color: $secondary;
         padding : 0 6.25vw;
 
         p{
@@ -36,7 +36,7 @@
         width : 55%;
         height : 100%;
         padding : 10vh 10vw;  
-        background-color: $violet-pale;
+        background-color: $tertiary;
 
         &-form{
             display : flex;
@@ -71,7 +71,7 @@
                     label{
                         font-weight : 600;
                         padding-left : 15px;
-                        color : $violet;
+                        color : $primary;
                         @media screen and (max-width : 990px){
                             font-size: 5vw;
                             padding-left : 20px;
@@ -88,12 +88,12 @@
                             width : 100%;
                             min-height : 6vh;
                             padding : 0 15px;
-                            border : 2px solid $violet;
+                            border : 2px solid $primary;
                             border-radius : 100vmax;
                             background-color: $blanc; 
 
                             &.error {
-                                border-color: $rouge; // Bordure rouge en cas d'erreur
+                                border-color: $secondary; // Bordure rouge en cas d'erreur
                             }
                         }
 
@@ -114,7 +114,7 @@
                     font-size : .9vw;
                     font-weight : 600;
                     padding-left : 15px;
-                    color : $rouge;
+                    color : $secondary;
                 }
             }
         }

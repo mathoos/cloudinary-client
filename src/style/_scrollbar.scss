@@ -4,18 +4,18 @@
   
 /* Track */
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px $violet; 
+    box-shadow: inset 0 0 5px $primary; 
     border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $violet; 
+    background: $primary; 
     border-radius: 10px;
     margin: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: $violet; 
+    background: $primary; 
 }
