@@ -94,12 +94,14 @@ const User = () => {
 
     return (
         <div className="user">
-            <Navbar isUserPage={true}/>
+            <Navbar isUserPage={true} />
             <div className="container">
                 <h2>Bonjour {userInfo.prenom}</h2>
-                {!isEditing ? (
-                    <button onClick={handleEditButtonClick}>Modifier mes informations</button>
-                ) : (
+                <div className="container_buttons">
+                    <button className="bouton" onClick={handleEditButtonClick}>Modifier mes informations</button>
+                    <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>
+                </div>
+                {isEditing && (
                     <form onSubmit={handleFormSubmit}>
                         <div>
                             <label htmlFor="nom">Nom</label>
@@ -140,9 +142,6 @@ const User = () => {
                         <button type="submit">Enregistrer</button>
                     </form>
                 )}
-                <div className="container_buttons">
-                    <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>
-                </div>
                 <div className="container_images">
                     {things.length > 0 ? (
                         things.map(thing => (
@@ -164,7 +163,7 @@ const User = () => {
                 initialData={{ title: '', description: '', tag: '' }}
             />
         </div>
-    )
+    );
 }
 
 export default User;
