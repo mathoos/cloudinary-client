@@ -130,9 +130,16 @@ export const getStuffByUser = async (userId, token) => {
                 Authorization: `Bearer ${token}`
             }
         });
+
+        // Vérifiez si le statut de la réponse est 404, ce qui signifie qu'il n'y a pas d'objets pour cet utilisateur
+        if (response.status === 404) {
+            return []; // Retourne un tableau vide si aucun objet n'existe pour cet utilisateur
+        }
+
         if (!response.ok) {
             throw new Error('La requête a échoué');
         }
+
         const data = await response.json();
         return data;
     } catch (error) {

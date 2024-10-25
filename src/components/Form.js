@@ -34,7 +34,7 @@ const Form = ({ title, handleSubmit, closeModal, modalActive, initialData }) => 
                     </fieldset>
                     <fieldset>
                         <label htmlFor="tag">Tag</label>
-                        <select name="tag" id="tag-select" defaultValue={initialData.tag} required>
+                        <select name="tag" id="tag" defaultValue={initialData.tag} required>
                             <option value="salle de bain">Salle de bain</option>
                             <option value="salle de douche">Salle de douche</option>
                             <option value="cuisine">Cuisine</option>

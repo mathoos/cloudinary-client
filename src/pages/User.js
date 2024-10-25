@@ -50,6 +50,7 @@ const User = () => {
         } 
         catch (error) {
             console.error("Une erreur s'est produite lors de la récupération des objets :", error);
+            // Optionnel : afficher un message d'erreur dans l'interface utilisateur
         }
     };
 
@@ -134,7 +135,6 @@ const User = () => {
                                 <option value="">Choisir un genre</option>
                                 <option value="Homme">Homme</option>
                                 <option value="Femme">Femme</option>
-                                <option value="Autre">Autre</option>
                             </select>
                         </div>
                         <button type="submit">Enregistrer</button>
@@ -144,11 +144,15 @@ const User = () => {
                     <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>
                 </div>
                 <div className="container_images">
-                    {things.map(thing => (
-                        <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
-                            <img src={thing.imageUrl} alt={thing.title} />
-                        </div>
-                    ))}
+                    {things.length > 0 ? (
+                        things.map(thing => (
+                            <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
+                                <img src={thing.imageUrl} alt={thing.title} />
+                            </div>
+                        ))
+                    ) : (
+                        <p>Vous n'avez créé aucun objet.</p>
+                    )}
                 </div>
             </div>
 

@@ -76,7 +76,15 @@ function Home() {
                         <fieldset>
                             <label htmlFor="email">Email</label>
                             <div className="input-container">
-                                <input className={`input-field ${emailError ? 'error' : ''}`} type="email" id="email" name="email" required onChange={(e) => setEmail(e.target.value)}/>
+                                <input 
+                                    className={`input-field ${emailError ? 'error' : ''}`} 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    required 
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    autoComplete="email" 
+                                />
                                 <figure className="icon">
                                     <img src={MailIcon} alt="Mail"/>
                                 </figure>
@@ -86,7 +94,15 @@ function Home() {
                         <fieldset>
                             <label htmlFor="password">Mot de passe</label>
                             <div className="input-container">
-                                <input className={`input-field ${passwordError ? 'error' : ''}`} type="password" id="password" name="password" required onChange={(e) => setPassword(e.target.value)}/>
+                                <input 
+                                    className={`input-field ${passwordError ? 'error' : ''}`} 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    required 
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    autoComplete="current-password" 
+                                />
                                 <figure className="icon">
                                     <img src={PasswordIcon} alt="Password"/>
                                 </figure>
