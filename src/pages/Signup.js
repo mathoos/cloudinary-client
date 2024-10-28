@@ -34,26 +34,30 @@ function Signup() {
         return null;
     };
 
-    const handleSubmit = async (e) => {
+    let handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Réinitialise les erreurs avant chaque tentative de connexion
         setEmailError(false);
         setPasswordError(false);
         setMessage("");
 
+        // Valide le mot de passe avant de l'envoyer
         const passwordError = validatePassword(password);
         if (passwordError) {
             setMessage(passwordError);
-            return;
+            return;  // Ne continue pas si le mot de passe n'est pas valide
         }
 
         try {
+            // Envoie les champs supplémentaires au backend
             const response = await signupUser(email, password, nom, prenom, genre);
-            if (response.message === 'Utilisateur créé ! Un email de confirmation a été envoyé.') {
-                setMessage("Inscription réussie ! Un email de confirmation a été envoyé à votre adresse.");
+            if (response.message === 'Utilisateur créé !') {
+                setMessage("Inscription réussie. Redirection vers la page de connexion...");
+                
                 setTimeout(() => {
                     navigate("/");
-                }, 3000);
+                }, 3000);  
             } else {
                 setMessage("Un problème est survenu lors de l'inscription.");
             }
