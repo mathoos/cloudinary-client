@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useCallback } from "react";
 import { createObject , getStuffByUser , getUserInfo , updateUserInfo } from "../utilities/Server"; 
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -11,10 +12,10 @@ import './User.scss';
 const User = () => {
     const token = useSelector((state) => state.user.token);
     const navigate = useNavigate();
-    const { id } = useParams(); // Récupération de l'id de l'URL
+    const { id } = useParams(); 
     const [things, setThings] = useState([]);
     const [modalActive, setModalActive] = useState(false); 
-    const [userInfo, setUserInfo] = useState({ nom: "", prenom: "" });
+    const [userInfo, setUserInfo] = useState({ nom: "", prenom: "", profileImageUrl: "" }); // Ajout de profileImageUrl
     const [isEditing, setIsEditing] = useState(false);
 
     const closeModal = () => {
@@ -43,35 +44,15 @@ const User = () => {
         navigate(`/image?id=${objectId}&token=${encodeURIComponent(token)}`);
     };
 
-    const fetchData = async () => {
-        try {
-            const data = await getStuffByUser(id, token); // Récupérer les objets pour cet utilisateur
-            setThings(data); 
-        } 
-        catch (error) {
-            console.error("Une erreur s'est produite lors de la récupération des objets :", error);
-            // Optionnel : afficher un message d'erreur dans l'interface utilisateur
-        }
-    };
-
-    const fetchUserInfo = async () => {
-        try {
-            const userData = await getUserInfo(token);
-            setUserInfo(userData); // Stocke les informations de l'utilisateur
-        } catch (error) {
-            console.error(error.message);
-        }
-    };
-
     const handleEditButtonClick = () => {
-        setIsEditing(true); // Active l'édition
+        setIsEditing(true); 
     };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
-            await updateUserInfo(token, userInfo); // Appelle la fonction pour mettre à jour l'utilisateur
-            setIsEditing(false); // Désactive l'édition après la mise à jour
+            await updateUserInfo(token, userInfo);
+            setIsEditing(false);
         } catch (error) {
             console.error("Erreur lors de la mise à jour des informations :", error);
         }
@@ -79,24 +60,50 @@ const User = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setUserInfo({ ...userInfo, [name]: value }); // Met à jour les valeurs dans le state
+        setUserInfo({ ...userInfo, [name]: value });
     };
 
-    useEffect(() => {
-        if (!token) {
-            navigate('/');
-        }
-        fetchData(); // Appel de fetchData ici
-        fetchUserInfo(); 
-    }, [token, id, navigate]); 
+   // Déclarez `fetchData` et `fetchUserInfo` avec `useCallback`
+const fetchData = useCallback(async () => {
+    try {
+        const data = await getStuffByUser(id, token);
+        setThings(data); 
+    } catch (error) {
+        console.error("Une erreur s'est produite lors de la récupération des objets :", error);
+    }
+}, [id, token]);
 
-    
+const fetchUserInfo = useCallback(async () => {
+    try {
+        const userData = await getUserInfo(token);
+        setUserInfo(userData);
+    } catch (error) {
+        console.error(error.message);
+    }
+}, [token]);
+
+// Puis utilisez-les dans `useEffect`
+useEffect(() => {
+    if (!token) {
+        navigate('/');
+    }
+    fetchData();
+    fetchUserInfo();
+}, [token, id, navigate, fetchData, fetchUserInfo]);
 
     return (
         <div className="user">
             <Navbar isUserPage={true} />
             <div className="container">
                 <h2>Bonjour {userInfo.prenom}</h2>
+
+                {/* Affichage de l'image de profil */}
+                {userInfo.profileImageUrl && (
+                    <div className="profile-image">
+                        <img src={userInfo.profileImageUrl} alt="Profile" />
+                    </div>
+                )}
+
                 <div className="container_buttons">
                     <button className="bouton" onClick={handleEditButtonClick}>Modifier mes informations</button>
                     <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>

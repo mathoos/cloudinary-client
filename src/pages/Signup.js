@@ -11,20 +11,19 @@ function Signup() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [nom, setNom] = useState("");            // Nouveau state pour le nom
-    const [prenom, setPrenom] = useState("");       // Nouveau state pour le prénom
-    const [genre, setGenre] = useState("homme");    // Nouveau state pour le genre
+    const [nom, setNom] = useState(""); 
+    const [prenom, setPrenom] = useState(""); 
+    const [genre, setGenre] = useState("homme");
+    const [profileImage, setProfileImage] = useState(null); // Nouveau state pour l'image de profil
 
-    const [emailError, setEmailError] = useState(false);  // Erreur email
-    const [passwordError, setPasswordError] = useState(false);  // Erreur mot de passe
-
+    const [emailError, setEmailError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
     const [message, setMessage] = useState("");
 
     const navigate = useNavigate();
 
-    // Fonction de validation du mot de passe
     const validatePassword = (password) => {
-        const hasNumber = /\d/; // Regex pour vérifier s'il y a un chiffre
+        const hasNumber = /\d/;
         if (password.length < 5) {
             return "Le mot de passe doit contenir au moins 5 caractères.";
         }
@@ -34,24 +33,21 @@ function Signup() {
         return null;
     };
 
-    let handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Réinitialise les erreurs avant chaque tentative de connexion
         setEmailError(false);
         setPasswordError(false);
         setMessage("");
 
-        // Valide le mot de passe avant de l'envoyer
         const passwordError = validatePassword(password);
         if (passwordError) {
             setMessage(passwordError);
-            return;  // Ne continue pas si le mot de passe n'est pas valide
+            return;
         }
 
         try {
-            // Envoie les champs supplémentaires au backend
-            const response = await signupUser(email, password, nom, prenom, genre);
+            const response = await signupUser(email, password, nom, prenom, genre, profileImage);
             if (response.message === 'Utilisateur créé !') {
                 setMessage("Inscription réussie. Redirection vers la page de connexion...");
                 
@@ -86,19 +82,16 @@ function Signup() {
                 <form className="home_login-form" onSubmit={handleSubmit}>
                     <h2>Créer un compte</h2>
                     <div className="home_login-form--fieldset">
-                         {/* Nouveau champ pour le nom */}
                          <fieldset>
                             <label htmlFor="nom">Nom</label>
                             <input type="text" id="nom" name="nom" required onChange={(e) => setNom(e.target.value)} />
                         </fieldset>
 
-                        {/* Nouveau champ pour le prénom */}
                         <fieldset>
                             <label htmlFor="prenom">Prénom</label>
                             <input type="text" id="prenom" name="prenom" required onChange={(e) => setPrenom(e.target.value)} />
                         </fieldset>
 
-                        {/* Nouveau champ pour le genre */}
                         <fieldset>
                             <label htmlFor="genre">Genre</label>
                             <select id="genre" name="genre" onChange={(e) => setGenre(e.target.value)}>
@@ -106,6 +99,7 @@ function Signup() {
                                 <option value="femme">Femme</option>
                             </select>
                         </fieldset>
+
                         <fieldset>
                             <label htmlFor="email">Email</label>
                             <div className="input-container">
@@ -114,8 +108,8 @@ function Signup() {
                                     <img src={MailIcon} alt="Mail"/>
                                 </figure>
                             </div>
-                            
                         </fieldset>
+
                         <fieldset>
                             <label htmlFor="password">Mot de passe</label>
                             <div className="input-container">
@@ -124,10 +118,15 @@ function Signup() {
                                     <img src={PasswordIcon} alt="Password"/>
                                 </figure>
                             </div>
-                            
                             {message && ( 
                                 <p className="error-message">{message}</p>
                             )}
+                        </fieldset>
+
+                        {/* Champ de fichier pour l'image de profil */}
+                        <fieldset>
+                            <label htmlFor="profileImage">Image de profil</label>
+                            <input type="file" id="profileImage" name="profileImage" onChange={(e) => setProfileImage(e.target.files[0])} />
                         </fieldset>
                     </div>
                     <div className="home_login-form--bouton">
@@ -138,7 +137,5 @@ function Signup() {
         </div>
     )
 }
-
-
 
 export default Signup;
