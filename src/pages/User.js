@@ -95,19 +95,21 @@ useEffect(() => {
         <div className="user">
             <Navbar isUserPage={true} />
             <div className="container">
-                <h2>Bonjour {userInfo.prenom}</h2>
 
-                {/* Affichage de l'image de profil */}
-                {userInfo.profileImageUrl && (
-                    <div className="profile-image">
-                        <img src={userInfo.profileImageUrl} alt="Profile" />
-                    </div>
-                )}
-
+                <div className="container_name">
+                    <h2>Bonjour {userInfo.prenom}</h2>
+                    {userInfo.profileImageUrl && (
+                        <div className="container_name-img">
+                            <img src={userInfo.profileImageUrl} alt="Profile" />
+                        </div>
+                    )}
+                </div>
+                
                 <div className="container_buttons">
                     <button className="bouton" onClick={handleEditButtonClick}>Modifier mes informations</button>
                     <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>
                 </div>
+
                 {isEditing && (
                     <form onSubmit={handleFormSubmit}>
                         <div>
