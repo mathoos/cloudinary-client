@@ -15,8 +15,7 @@ export const signupUser = async (email, password, nom, prenom, genre, image) => 
         formData.append("nom", nom);
         formData.append("prenom", prenom);
         formData.append("genre", genre);
-        
-        // Ajoute l'image de profil au FormData
+
         if (image) {
             formData.append("image", image);
         }
@@ -36,6 +35,34 @@ export const signupUser = async (email, password, nom, prenom, genre, image) => 
         return responseData;
     } catch (error) {
         console.error("Erreur lors de la requête d'inscription :", error);
+        throw error;
+    }
+};
+
+export const createObject = async (title, description, tag, image, token) => {
+    try {
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("tag", tag);
+        if (image) {
+            formData.append("image", image);
+        }
+
+        const response = await fetch(`${API_BASE_STUFF}`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error('La requête a échoué');
+        }
+        const data = await response.json();
+        console.log(data.message);
+    } catch (error) {
         throw error;
     }
 };
@@ -88,15 +115,14 @@ export const getUserInfo = async (token) => {
     }
 };
 
-export const updateUserInfo = async (token, userInfo) => {
+export const updateUserInfo = async (token, formData) => {
     try {
         const response = await fetch(`${API_BASE_AUTH}/me`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(userInfo)
+            body: formData
         });
 
         if (!response.ok) {
@@ -151,25 +177,7 @@ export const getStuffByUser = async (userId, token) => {
 };
 
 
-export const createObject = async (formData, token) => {
-    try {
-        const response = await fetch(`${API_BASE_STUFF}`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
-            body: formData
-        });
 
-        if (!response.ok) {
-            throw new Error('La requête a échoué');
-        }
-        const data = await response.json();
-        console.log(data.message);
-    } catch (error) {
-        throw error;
-    }
-};
 
 
 export const getObjectDetails = async (objectId, token) => {

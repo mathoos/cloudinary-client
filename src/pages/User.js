@@ -15,7 +15,7 @@ const User = () => {
     const { id } = useParams(); 
     const [things, setThings] = useState([]);
     const [modalActive, setModalActive] = useState(false); 
-    const [userInfo, setUserInfo] = useState({ nom: "", prenom: "", profileImageUrl: "" });
+    const [userInfo, setUserInfo] = useState({ nom: "", prenom: "", profileImageUrl: "", profileImage: null });
     const [isEditing, setIsEditing] = useState(false);
 
     const closeModal = () => {
@@ -26,14 +26,12 @@ const User = () => {
         setModalActive(true); 
     };
 
-    const handleCreateObjectFormSubmit = async (event) => {
-        event.preventDefault();
-        const formData = new FormData(event.target);
+    const handleCreateObjectFormSubmit = async (event, formData) => {
         try {
-            await createObject(formData, token);
-            event.target.reset();
+            await createObject(formData.title, formData.description, formData.tag, formData.image, token);
+            event.target.reset(); // Reset du formulaire
             closeModal();
-            fetchData();
+            fetchData(); // Rafraîchir les données
         } 
         catch (error) {
             console.error("Une erreur s'est produite lors de la création de l'objet :", error);
@@ -51,13 +49,34 @@ const User = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
+        const formData = new FormData();
+        formData.append("nom", userInfo.nom);
+        formData.append("prenom", userInfo.prenom);
+        formData.append("genre", userInfo.genre);
+
+        // Vérification de l'image avant l'envoi
+        if (userInfo.profileImage) {
+            console.log("Image ajoutée :", userInfo.profileImage); // Debugging
+            formData.append("image", userInfo.profileImage);
+        } else {
+            console.log("Aucune image ajoutée."); // Debugging
+        }
+
         try {
-            await updateUserInfo(token, userInfo);
+            await updateUserInfo(token, formData);
+            
+            // Après la mise à jour, rafraîchissez les informations de l'utilisateur
+            await fetchUserInfo();  // Récupérer les nouvelles informations
             setIsEditing(false);
-        } 
-        catch (error) {
+        } catch (error) {
             console.error("Erreur lors de la mise à jour des informations :", error);
         }
+    };
+    
+    // Gestion de l'upload de l'image
+    const handleImageChange = (event) => {
+        const file = event.target.files[0]; // Récupérer le fichier sélectionné
+        setUserInfo({ ...userInfo, profileImage: file }); // Mettre à jour l'état avec le fichier
     };
 
     const handleInputChange = (e) => {
@@ -149,6 +168,15 @@ useEffect(() => {
                                 <option value="Homme">Homme</option>
                                 <option value="Femme">Femme</option>
                             </select>
+                        </div>
+                        <div>
+                            <label htmlFor="profileImage">Image de Profil</label>
+                            <input
+                                type="file"
+                                id="profileImage"
+                                name="profileImage"
+                                onChange={handleImageChange}
+                            />
                         </div>
                         <button type="submit">Enregistrer</button>
                     </form>
