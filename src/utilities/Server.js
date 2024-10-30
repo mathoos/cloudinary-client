@@ -88,15 +88,14 @@ export const getUserInfo = async (token) => {
     }
 };
 
-export const updateUserInfo = async (token, userInfo) => {
+export const updateUserInfo = async (token, formData) => {
     try {
         const response = await fetch(`${API_BASE_AUTH}/me`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(userInfo)
+            body: formData
         });
 
         if (!response.ok) {
