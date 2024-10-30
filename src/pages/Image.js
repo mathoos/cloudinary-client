@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import { getObjectDetails , modifyObject, deleteObject} from '../utilities/Server';
+import { getObjectInfo , updateObject, deleteObject} from '../utilities/Server';
 
 import Form from '../components/Form';
 import './Image.scss';
@@ -19,7 +19,7 @@ function Image() {
     useEffect(() => {
         const fetchObject = async () => {
             try {
-                const data = await getObjectDetails(objectId, token);
+                const data = await getObjectInfo(objectId, token);
                 setObjectDetails(data);
             } 
             catch (error) {
@@ -38,8 +38,8 @@ function Image() {
         event.preventDefault();
         const formData = new FormData(event.target);
         try {
-            await modifyObject(objectId, formData, token);
-            const newData = await getObjectDetails(objectId, token);
+            await updateObject(objectId, formData, token);
+            const newData = await getObjectInfo(objectId, token);
             setObjectDetails(newData);
             setModalActive(false); 
         } 

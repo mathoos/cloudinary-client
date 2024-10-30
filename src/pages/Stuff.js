@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllStuff } from "../utilities/Server"; 
+import { getAllObjects } from "../utilities/Server"; 
 import Navbar from '../components/Navbar';
 import { useNavigate } from "react-router-dom"; // Importer useNavigate
 import { useSelector } from "react-redux"; // Importer useSelector
@@ -12,7 +12,7 @@ const Stuff = () => {
 
     const fetchData = async () => {
         try {
-            const data = await getAllStuff(); // Récupérer tous les objets
+            const data = await getAllObjects(); // Récupérer tous les objets
             setThings(data); // Mettre à jour l'état avec les objets récupérés
         } catch (error) {
             console.error("Une erreur s'est produite lors de la récupération des objets :", error);

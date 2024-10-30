@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
-import { createObject , getStuffByUser , getUserInfo , updateUserInfo } from "../utilities/Server"; 
+import { createObject , getObjectsByUser , getUserInfo , updateUserInfo } from "../utilities/Server"; 
 import { useNavigate, useParams } from "react-router-dom";
 
 import Form from '../components/Form';
@@ -87,7 +87,7 @@ const User = () => {
    // Déclarez `fetchData` et `fetchUserInfo` avec `useCallback`
 const fetchData = useCallback(async () => {
     try {
-        const data = await getStuffByUser(id, token);
+        const data = await getObjectsByUser(id, token);
         setThings(data); 
     } catch (error) {
         console.error("Une erreur s'est produite lors de la récupération des objets :", error);

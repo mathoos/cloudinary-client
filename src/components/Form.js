@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Form.scss';
 
 const Form = ({ title, handleSubmit, closeModal, modalActive, initialData }) => {
+    
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -9,13 +10,12 @@ const Form = ({ title, handleSubmit, closeModal, modalActive, initialData }) => 
         image: null,
     });
 
-    // Utilisation d'un effet pour initialiser les données du formulaire lors du changement de `initialData`
     useEffect(() => {
         setFormData({
             title: initialData.title || '',
             description: initialData.description || '',
             tag: initialData.tag || '',
-            image: null, // L'image ne sera pas pré-remplie pour des raisons de sécurité et de praticité
+            image: null, 
         });
     }, [initialData]);
 
