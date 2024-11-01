@@ -1,10 +1,10 @@
 // // Prod
 // const API_BASE_AUTH = "https://cloudinary-serveur.onrender.com/api/auth";
-// const API_BASE_STUFF = "https://cloudinary-serveur.onrender.com/api/stuff";
+// const API_BASE_OBJECT = "https://cloudinary-serveur.onrender.com/api/object";
 
 //Local
 const API_BASE_AUTH = "http://localhost:3000/api/auth";
-const API_BASE_STUFF = "http://localhost:3000/api/stuff";
+const API_BASE_OBJECT = "http://localhost:3000/api/object";
 
 
 export const signupUser = async (email, password, nom, prenom, genre, image) => {
@@ -144,7 +144,7 @@ export const createObject = async (title, description, tag, image, token) => {
             formData.append("image", image);
         }
 
-        const response = await fetch(`${API_BASE_STUFF}`, {
+        const response = await fetch(`${API_BASE_OBJECT}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -170,7 +170,7 @@ export const createObject = async (title, description, tag, image, token) => {
 export const getObjectsByUser = async (userId, token) => {
 
     try {
-        const response = await fetch(`${API_BASE_STUFF}/user/${userId}`, {
+        const response = await fetch(`${API_BASE_OBJECT}/user/${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -200,7 +200,7 @@ export const getObjectsByUser = async (userId, token) => {
 export const getAllObjects = async () => {
 
     try {
-        const response = await fetch(`${API_BASE_STUFF}`, {
+        const response = await fetch(`${API_BASE_OBJECT}`, {
             method: "GET",
         });
 
@@ -224,7 +224,7 @@ export const getAllObjects = async () => {
 export const getObjectInfo = async (objectId, token) => {
 
     try {
-        const response = await fetch(`${API_BASE_STUFF}/${objectId}`, {
+        const response = await fetch(`${API_BASE_OBJECT}/${objectId}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -250,7 +250,7 @@ export const getObjectInfo = async (objectId, token) => {
 export const updateObject = async (objectId, formData, token) => {
 
     try {
-        const response = await fetch(`${API_BASE_STUFF}/${objectId}`, {
+        const response = await fetch(`${API_BASE_OBJECT}/${objectId}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -278,7 +278,7 @@ export const updateObject = async (objectId, formData, token) => {
 export const deleteObject = async (objectId, token) => {
 
     try {
-        const response = await fetch(`${API_BASE_STUFF}/${objectId}`, {
+        const response = await fetch(`${API_BASE_OBJECT}/${objectId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
