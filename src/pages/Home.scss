@@ -12,12 +12,12 @@
         gap : 5vh;
         width : 45%;
         height : 100%;
-        background-color: $secondary;
+        background-color: $primary;
         padding : 0 6.25vw;
 
         p{
-            color : $blanc;
             font-size: 1.4vw;
+            color : $secondary;
         }
 
         &-logo{
@@ -36,7 +36,7 @@
         width : 55%;
         height : 100%;
         padding : 10vh 10vw;  
-        background-color: $tertiary;
+        background-color: $secondary;
 
         &-form{
             display : flex;
