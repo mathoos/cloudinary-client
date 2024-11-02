@@ -40,10 +40,11 @@ input, fieldset, textarea{
 
 input[type=file]::file-selector-button {
     border-radius : 50vmax;
-    background-color : $primaryOpac;
+    background-color : $blanc;
     border : 2px solid $primary;
+    color: $primary;
     padding : .5vh .8vw;
-    color: $blanc;
+    
     cursor: pointer;
 }
 

@@ -139,7 +139,6 @@ function Signup() {
                             </div>
                         </fieldset>
                         
-
                         <fieldset>
                             <label htmlFor="email">Email</label>
                             <div className="input-container">
@@ -174,7 +173,7 @@ function Signup() {
                         </fieldset>
 
                         <fieldset>
-                            <label htmlFor="profileImage">Image de profil</label>
+                            <label htmlFor="profileImage">Photo de profil</label>
                             <input 
                                 type="file" 
                                 id="profileImage" 

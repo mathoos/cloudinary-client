@@ -92,6 +92,7 @@
                         height: 22px;
                         width: 22px;
                         border : 2px solid $primary;
+                        background-color: $blanc;
                         border-radius: 100vmax;
 
                         &::after{
@@ -125,7 +126,6 @@
                     flex-direction: column;
                     gap : 1vh;
                     width : calc(100% - 30px);
-                    min-height : 2vw;
                     @media screen and (max-width : 990px){
                         gap : 1vh;
                         min-height : auto;
@@ -155,6 +155,7 @@
                             border : 2px solid $primary;
                             border-radius : 100vmax;
                             background-color: $blanc; 
+                            font-weight : 600;
 
                             &.error {
                                 //border-color: $secondary;
