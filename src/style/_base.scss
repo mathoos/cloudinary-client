@@ -44,7 +44,7 @@ input[type=file]::file-selector-button {
     border : 2px solid $primary;
     color: $primary;
     padding : .5vh .8vw;
-    
+    font-size: 1vw; 
     cursor: pointer;
 }
 

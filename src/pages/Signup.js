@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupUser } from "../utilities/Server";
 import Logo from "../img/logo.svg";
-import MailIcon from "../img/mail.svg";
-import PasswordIcon from "../img/password.svg";
+import MailIcon from '../components/MailIcon';
+import PasswordIcon from '../components/PasswordIcon';
 
 import './Signup.scss';
 
@@ -112,6 +112,39 @@ function Signup() {
                                 </div>
                             </fieldset>
                         </div>
+                        
+                        <fieldset>
+                            <label htmlFor="email">Email</label>
+                            <div className="input-container">
+                                <input 
+                                    className={`input-field ${emailError ? 'error' : ''}`} 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    onChange={(e) => setEmail(e.target.value)}/>
+                                <figure className="icon">
+                                    <MailIcon/>
+                                </figure>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <label htmlFor="password">Mot de passe</label>
+                            <div className="input-container">
+                                <input 
+                                    className={`input-field ${passwordError ? 'error' : ''}`} 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    onChange={(e) => setPassword(e.target.value)}/>
+                                <figure className="icon">
+                                    <PasswordIcon/>
+                                </figure>
+                            </div>
+                            {message && ( 
+                                <p className="error-message">{message}</p>
+                            )}
+                        </fieldset>
 
                         <fieldset>
                             <div className="row">
@@ -137,39 +170,6 @@ function Signup() {
                                     Une femme
                                 </label>
                             </div>
-                        </fieldset>
-                        
-                        <fieldset>
-                            <label htmlFor="email">Email</label>
-                            <div className="input-container">
-                                <input 
-                                    className={`input-field ${emailError ? 'error' : ''}`} 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    onChange={(e) => setEmail(e.target.value)}/>
-                                <figure className="icon">
-                                    <img src={MailIcon} alt="Mail"/>
-                                </figure>
-                            </div>
-                        </fieldset>
-
-                        <fieldset>
-                            <label htmlFor="password">Mot de passe</label>
-                            <div className="input-container">
-                                <input 
-                                    className={`input-field ${passwordError ? 'error' : ''}`} 
-                                    type="password" 
-                                    id="password" 
-                                    name="password" 
-                                    onChange={(e) => setPassword(e.target.value)}/>
-                                <figure className="icon">
-                                    <img src={PasswordIcon} alt="Password"/>
-                                </figure>
-                            </div>
-                            {message && ( 
-                                <p className="error-message">{message}</p>
-                            )}
                         </fieldset>
 
                         <fieldset>

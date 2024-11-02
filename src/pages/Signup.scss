@@ -55,9 +55,8 @@
                 position : relative;
                 display : flex;
                 flex-direction: column;
-                gap : 5vh;
+                gap : 3vh;
                 height : 100%;
-                overflow-y : scroll;
 
                 @media screen and (max-width : 990px){
                     gap : 2.5vh;
@@ -67,7 +66,7 @@
                     display : flex;
                     align-items: center;
                     gap : 1vw;
-                    width : calc(100% - 30px);
+                    width : 100%;
                 }
 
                 .radio-label{
@@ -125,7 +124,7 @@
                     display : flex;
                     flex-direction: column;
                     gap : 1vh;
-                    width : calc(100% - 30px);
+                    width : 100%;
                     @media screen and (max-width : 990px){
                         gap : 1vh;
                         min-height : auto;
@@ -177,9 +176,13 @@
                             right : 15px;
                             height : 3vh;
 
-                            img{
+                            svg{
                                 width : auto;
                                 height : 100%;
+
+                                path{
+                                    fill : $primary;
+                                }
                             }
                         }
                     }   
