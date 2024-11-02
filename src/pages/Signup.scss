@@ -65,21 +65,22 @@
 
                 .row{
                     display : flex;
+                    align-items: center;
                     gap : 1vw;
+                    width : calc(100% - 30px);
                 }
 
                 .radio-label{
-                    display: block;
                     position: relative;
-                    padding-left: 35px;
-                    margin-bottom: 12px;
+                    display: flex;
+                    align-items: center;              
+                    padding-left: 30px;
                     cursor: pointer;
-                    font-size: 22px;
                     -webkit-user-select: none;
                     -moz-user-select: none;
                     -ms-user-select: none;
                     user-select: none;
-                    border : 1px solid red;
+                    min-height : 22px;
 
                     .checkmark {
                         position: absolute;
@@ -88,8 +89,8 @@
                         display : flex;
                         justify-content: center;
                         align-items: center;
-                        height: 25px;
-                        width: 25px;
+                        height: 22px;
+                        width: 22px;
                         border : 2px solid $primary;
                         border-radius: 100vmax;
 
@@ -97,8 +98,8 @@
                             position : absolute;
                             content : '';
                             display : none;
-                            width: 15px;
-                            height: 15px;
+                            width: 10px;
+                            height: 10px;
                             border-radius: 100vmax;
                             background: $primary;
                         }
@@ -116,16 +117,14 @@
                                 }    
                             } 
                         }
-                    }
-
-                    
+                    }    
                 }
     
                 fieldset{
                     display : flex;
                     flex-direction: column;
                     gap : 1vh;
-                    width : 100%;
+                    width : calc(100% - 30px);
                     min-height : 2vw;
                     @media screen and (max-width : 990px){
                         gap : 1vh;
@@ -158,8 +157,18 @@
                             background-color: $blanc; 
 
                             &.error {
-                                border-color: $secondary; // Bordure rouge en cas d'erreur
+                                //border-color: $secondary;
                             }
+
+                            &:-webkit-autofill {
+                                -webkit-box-shadow:0 0 0 50px $blanc inset;
+                                -webkit-text-fill-color: $primary;
+                            }
+                            
+                            &:-webkit-autofill:focus {
+                                -webkit-box-shadow: 0 0 0 50px $blanc inset;
+                                -webkit-text-fill-color: $primary;
+                            } 
                         }
 
                         .icon {
@@ -179,7 +188,7 @@
                     font-size : .9vw;
                     font-weight : 600;
                     padding-left : 15px;
-                    color : $secondary;
+                    color : $primary;
                 }
             }
         }

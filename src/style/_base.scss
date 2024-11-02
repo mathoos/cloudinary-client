@@ -38,6 +38,15 @@ input, fieldset, textarea{
     background-color: transparent;
 }
 
+input[type=file]::file-selector-button {
+    border-radius : 50vmax;
+    background-color : $primaryOpac;
+    border : 2px solid $primary;
+    padding : .5vh .8vw;
+    color: $blanc;
+    cursor: pointer;
+}
+
 hr{
     outline: none;
     padding: 0;

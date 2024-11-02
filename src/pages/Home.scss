@@ -82,7 +82,9 @@
                         position : relative;
                         display: flex;
                         align-items: center;
-                        width: 100%;               
+                        width: 100%;   
+                        
+                        
 
                         .input-field {   
                             width : 100%;
@@ -93,8 +95,18 @@
                             background-color: $blanc; 
 
                             &.error {
-                                border-color: $secondary; // Bordure rouge en cas d'erreur
+                                //border-color: $secondary;
                             }
+
+                            &:-webkit-autofill {
+                                -webkit-box-shadow:0 0 0 50px $blanc inset;
+                                -webkit-text-fill-color: $primary;
+                            }
+                            
+                            &:-webkit-autofill:focus {
+                                -webkit-box-shadow: 0 0 0 50px $blanc inset;
+                                -webkit-text-fill-color: $primary;
+                            } 
                         }
 
                         .icon {
@@ -114,7 +126,7 @@
                     font-size : .9vw;
                     font-weight : 600;
                     padding-left : 15px;
-                    color : $secondary;
+                    color : $primary;
                 }
             }
         }
