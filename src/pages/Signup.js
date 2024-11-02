@@ -8,17 +8,16 @@ import PasswordIcon from '../components/PasswordIcon';
 import './Signup.scss';
 
 function Signup() {
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [nom, setNom] = useState(""); 
     const [prenom, setPrenom] = useState(""); 
     const [genre, setGenre] = useState("homme");
-    const [profileImage, setProfileImage] = useState(null); // Nouveau state pour l'image de profil
+    const [profileImage, setProfileImage] = useState(null); 
 
     const [emailError, setEmailError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
-    const [nameError, setNameError] = useState(false);
+    const [passwordError, setPasswordError] = useState("");
+    const [profileImageError, setProfileImageError] = useState("");
     const [message, setMessage] = useState("");
 
     const navigate = useNavigate();
@@ -34,18 +33,38 @@ function Signup() {
         return null;
     };
 
+    const validateFile = (profileImage) => {
+        if (profileImage && profileImage.size > 300 * 1024) {
+            return "La création du compte a échoué car le fichier sélectionné est trop volumineux. Veuillez choisir une image de moins de 300 Ko.";
+        }
+        return null; 
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         setEmailError(false);
-        setPasswordError(false);
-        setNameError(false);
+        setPasswordError("");
+        setProfileImageError("");
         setMessage("");
 
         const passwordError = validatePassword(password);
+        const fileError = validateFile(profileImage);
+
         if (passwordError) {
-            setMessage(passwordError);
+            setPasswordError(passwordError);
             return;
+        } 
+        else {
+            setPasswordError("");
+        }
+
+        if (fileError) { 
+            setProfileImageError(fileError);
+            return;
+        } 
+        else {
+            setProfileImageError("");
         }
 
         try {
@@ -69,7 +88,6 @@ function Signup() {
 
     return (
         <div className="signup">           
-
             <div className="signup_title">
                 <h1>Lorem Ipsum is simply dummy text.</h1>
                 <p>
@@ -85,13 +103,12 @@ function Signup() {
                 <form className="signup_login-form" onSubmit={handleSubmit}>
                     <h2>Créer un compte</h2>
                     <div className="signup_login-form--fieldset">
-
                         <div className="row">
                             <fieldset>
                                 <label htmlFor="nom">Nom</label>
                                 <div className="input-container">
                                     <input 
-                                        className={`input-field ${nameError ? 'error' : ''}`} 
+                                        className="input-field"
                                         type="text" 
                                         id="nom" 
                                         name="nom" 
@@ -103,7 +120,7 @@ function Signup() {
                                 <label htmlFor="prenom">Prénom</label>
                                 <div className="input-container">
                                     <input 
-                                        className={`input-field ${nameError ? 'error' : ''}`} 
+                                        className="input-field"
                                         type="text" 
                                         id="prenom" 
                                         name="prenom" 
@@ -141,8 +158,8 @@ function Signup() {
                                     <PasswordIcon/>
                                 </figure>
                             </div>
-                            {message && ( 
-                                <p className="error-message">{message}</p>
+                            {passwordError && ( 
+                                <p className="error-message">{passwordError}</p> 
                             )}
                         </fieldset>
 
@@ -156,7 +173,7 @@ function Signup() {
                                         value="homme" 
                                         onChange={(e) => setGenre(e.target.value)} 
                                     />
-                                    <span class="checkmark"></span>
+                                    <span className="checkmark"></span>
                                     Un homme
                                 </label>
                                 <label className="radio-label">
@@ -166,7 +183,7 @@ function Signup() {
                                         value="femme" 
                                         onChange={(e) => setGenre(e.target.value)} 
                                     />
-                                    <span class="checkmark"></span>
+                                    <span className="checkmark"></span>
                                     Une femme
                                 </label>
                             </div>
@@ -175,10 +192,17 @@ function Signup() {
                         <fieldset>
                             <label htmlFor="profileImage">Photo de profil</label>
                             <input 
+                                className={`input-field ${profileImageError ? 'error' : ''}`} 
                                 type="file" 
                                 id="profileImage" 
                                 name="profileImage" 
-                                onChange={(e) => setProfileImage(e.target.files[0])} />
+                                onChange={(e) => setProfileImage(e.target.files[0])} 
+                            />
+                             {(profileImageError || message) && ( 
+                                <p className="error-message">
+                                    {profileImageError || message}
+                                </p>
+                            )}
                         </fieldset>
                     </div>
 
@@ -188,7 +212,7 @@ function Signup() {
                 </form>
             </div>
         </div>
-    )
+    );
 }
 
 export default Signup;
