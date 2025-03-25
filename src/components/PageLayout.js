@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import "./PageLayout.scss";
 
-function PageLayout({ title, description, buttonText, buttonLink, children, backgroundImage, signupText }) {
+function PageLayout({ title, description, buttonText, buttonLink, children, backgroundImage, signupText, logo }) {
     return (
         <div className="page-layout">
             <div className="page-layout_container">
                 <div className="page-layout_container-text">
-                    <Link to="/">The Drop</Link>
+                    {logo && (
+                        <Link to="/">The Drop</Link>
+                    )}
                     <div className="page-layout_container-text--title">
                         <h1 dangerouslySetInnerHTML={{ __html: title }} />
                         {description && <p className="subtitle">{description}</p>}
@@ -21,7 +23,7 @@ function PageLayout({ title, description, buttonText, buttonLink, children, back
                 </div>
                 <div className="page-layout_container-image">
                     <img src={backgroundImage} alt="Illustration" />
-                    {/* Affichage conditionnel du texte d'inscription */}
+
                     {signupText && (
                         <p className="page-layout_container-image--signup">
                             {signupText}

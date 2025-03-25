@@ -1,11 +1,12 @@
+import PageLayout from "../components/PageLayout";
+import HomepageBackground from "../img/homepage.gif";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { signupUser } from "../utilities/Server";
-import Logo from "../img/logo.svg";
-import MailIcon from '../components/MailIcon';
-import PasswordIcon from '../components/PasswordIcon';
 
-import './Signup.scss';
+
+import './Login.scss';
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -87,131 +88,115 @@ function Signup() {
     };
 
     return (
-        <div className="signup">           
-            <div className="signup_title">
-                <h1>Lorem Ipsum is simply dummy text.</h1>
-                <p>
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                    when an unknown printer took a galley of type.
-                </p>
-                <figure className="signup_title-logo">
-                    <img src={Logo} alt="Logo"/>
-                </figure>
-            </div>
 
-            <div className="signup_login">
-                <form className="signup_login-form" onSubmit={handleSubmit}>
-                    <h2>Créer un compte</h2>
-                    <div className="signup_login-form--fieldset">
-                        <div className="row">
-                            <fieldset>
-                                <label htmlFor="nom">Nom</label>
-                                <div className="input-container">
-                                    <input 
-                                        className="input-field"
-                                        type="text" 
-                                        id="nom" 
-                                        name="nom" 
-                                        onChange={(e) => setNom(e.target.value)} 
-                                    />
-                                </div> 
-                            </fieldset>
-                            <fieldset>
-                                <label htmlFor="prenom">Prénom</label>
-                                <div className="input-container">
-                                    <input 
-                                        className="input-field"
-                                        type="text" 
-                                        id="prenom" 
-                                        name="prenom" 
-                                        onChange={(e) => setPrenom(e.target.value)} 
-                                    />
-                                </div>
-                            </fieldset>
-                        </div>
-                        
+        <PageLayout
+            title="Sign up"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            buttonText=""
+            buttonLink=""
+            backgroundImage={HomepageBackground}
+        >
+        
+            <form className="login" onSubmit={handleSubmit}>
+                
+                <div className="login_container">
+                    <div className="row">
                         <fieldset>
-                            <label htmlFor="email">Email</label>
-                            <div className="input-container">
-                                <input 
-                                    className={`input-field ${emailError ? 'error' : ''}`} 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    onChange={(e) => setEmail(e.target.value)}/>
-                                <figure className="icon">
-                                    <MailIcon/>
-                                </figure>
-                            </div>
+                            <input 
+                                type="text" 
+                                id="nom" 
+                                name="nom" 
+                                onChange={(e) => setNom(e.target.value)} 
+                                placeholder="Nom"
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <input 
+                                type="text" 
+                                id="prenom" 
+                                name="prenom" 
+                                onChange={(e) => setPrenom(e.target.value)} 
+                                placeholder="Prénom"
+                            />
+                        </fieldset>
+                    </div>
+
+                    <div className="row">
+                    
+                        <fieldset>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Email"
+                            />
                         </fieldset>
 
                         <fieldset>
-                            <label htmlFor="password">Mot de passe</label>
-                            <div className="input-container">
-                                <input 
-                                    className={`input-field ${passwordError ? 'error' : ''}`} 
-                                    type="password" 
-                                    id="password" 
-                                    name="password" 
-                                    onChange={(e) => setPassword(e.target.value)}/>
-                                <figure className="icon">
-                                    <PasswordIcon/>
-                                </figure>
-                            </div>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Mot de passe"
+                            />
+                        
                             {passwordError && ( 
                                 <p className="error-message">{passwordError}</p> 
                             )}
                         </fieldset>
+                    </div>
 
-                        <fieldset>
-                            <div className="row">
-                                <legend>Je suis</legend>
-                                <label className="radio-label">
-                                    <input 
-                                        type="radio" 
-                                        name="genre" 
-                                        value="homme" 
-                                        onChange={(e) => setGenre(e.target.value)} 
-                                    />
-                                    <span className="checkmark"></span>
-                                    Un homme
-                                </label>
-                                <label className="radio-label">
-                                    <input 
-                                        type="radio" 
-                                        name="genre" 
-                                        value="femme" 
-                                        onChange={(e) => setGenre(e.target.value)} 
-                                    />
-                                    <span className="checkmark"></span>
-                                    Une femme
-                                </label>
-                            </div>
-                        </fieldset>
+                    <fieldset>
+                        <div className="row">
+                            <legend>Je suis</legend>
+                            <label className="radio-label">
+                                <input 
+                                    type="radio" 
+                                    name="genre" 
+                                    value="homme" 
+                                    onChange={(e) => setGenre(e.target.value)} 
+                                />
+                                <span className="checkmark"></span>
+                                Un homme
+                            </label>
+                            <label className="radio-label">
+                                <input 
+                                    type="radio" 
+                                    name="genre" 
+                                    value="femme" 
+                                    onChange={(e) => setGenre(e.target.value)} 
+                                />
+                                <span className="checkmark"></span>
+                                Une femme
+                            </label>
+                        </div>
+                    </fieldset>
 
-                        <fieldset>
-                            <label htmlFor="profileImage">Photo de profil</label>
+                    <fieldset>
+                        
                             <input 
-                                className={`input-field ${profileImageError ? 'error' : ''}`} 
                                 type="file" 
                                 id="profileImage" 
                                 name="profileImage" 
                                 onChange={(e) => setProfileImage(e.target.files[0])} 
+                                placeholder="coucou"
                             />
-                             {(profileImageError || message) && ( 
+                            {(profileImageError || message) && ( 
                                 <p className="error-message">
                                     {profileImageError || message}
                                 </p>
                             )}
-                        </fieldset>
-                    </div>
+                    
+                    </fieldset>
+                </div>
 
-                    <div className="signup_login-form--bouton">
-                        <button className="bouton" type="submit">S'inscrire</button>
-                    </div>  
-                </form>
-            </div>
-        </div>
+                <button className="bouton" type="submit">S'inscrire</button>
+    
+            </form>
+            
+        </PageLayout>
     );
 }
 

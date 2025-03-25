@@ -11,6 +11,7 @@ function Homepage() {
             buttonText="Drop it"
             buttonLink="/login"
             backgroundImage={HomepageBackground}
+            logo
         />
     )
 }

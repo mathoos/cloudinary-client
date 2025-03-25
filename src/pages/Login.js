@@ -33,7 +33,7 @@ function Login() {
             localStorage.setItem('token', token);
 
             dispatch(setToken(token));
-            navigate(`/user/${userId}`);
+            navigate(`/dashboard/${userId}`);
         } 
         catch (error) {
             // Capture l'erreur renvoyée par le backend
@@ -43,15 +43,13 @@ function Login() {
     };
 
     return (
-
-
         <PageLayout
             title="Login"
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             buttonText=""
             buttonLink=""
             backgroundImage={HomepageBackground}
-            signupText={<>Nouveau sur la plateforme ? <Link to="/sign-up">Inscris-toi !</Link></>}
+            signupText={<>Nouveau sur la plateforme ? <Link to="/signup">Inscris-toi !</Link></>}
         >
         
             <form className="login" onSubmit={handleSubmit}>
@@ -91,7 +89,6 @@ function Login() {
                 <button className="bouton" type="submit">Connexion</button>
            
             </form>
-
         </PageLayout>
     )
 }

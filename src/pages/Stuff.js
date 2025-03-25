@@ -3,7 +3,7 @@ import { getAllObjects } from "../utilities/Server";
 import Navbar from '../components/Navbar';
 import { useNavigate } from "react-router-dom"; // Importer useNavigate
 import { useSelector } from "react-redux"; // Importer useSelector
-import './User.scss';
+import './Dashboard.scss';
 
 const Stuff = () => {
     const [things, setThings] = useState([]); // État pour stocker les objets

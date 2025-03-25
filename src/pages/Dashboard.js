@@ -7,9 +7,9 @@ import { createObject , getObjectsByUser , getUserInfo , updateUserInfo } from "
 import Form from '../components/Form';
 import Navbar from '../components/Navbar';
 
-import './User.scss';
+import './Dashboard.scss';
 
-const User = () => {
+const Dashboard = () => {
     const token = useSelector((state) => state.user.token);
     const navigate = useNavigate();
     const { id } = useParams(); 
@@ -205,4 +205,4 @@ useEffect(() => {
     );
 }
 
-export default User;
+export default Dashboard;

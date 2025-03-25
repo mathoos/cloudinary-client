@@ -15,14 +15,16 @@
         gap : 2vh;
 
         fieldset{
+            width : 100%;
 
             input{   
                 width : 100%;
                 min-height : 6vh;
-                padding : 0 15px;
+                padding : 0 25px;
                 border-radius : 100vmax;
                 background-color: $gris;
                 font-weight : 600;
+                font-size : 1.1vw;
                 color : $noir;
 
                 &:-webkit-autofill {
@@ -34,8 +36,93 @@
                     -webkit-box-shadow: 0 0 0 50px $gris inset;
                     -webkit-text-fill-color: $noir;
                 } 
+                
+                &::placeholder{
+                    color : $gris-dark;
+                }
             }
-             
+
+            input[type=file]{
+                background-color: $blanc;
+                border-radius : 0;
+                padding : 0;
+                
+            }
+
+            input[type=file]::file-selector-button {
+                background-color : $gris;
+                color: $gris-dark;
+                border : none;
+                min-height : 6vh;
+                padding : 0 25px;
+                font-family: "Ysabeau Office";
+                font-weight : 600;
+                font-size : 1.1vw;
+            }
+           
+
+            label, legend{
+                font-weight : 600;
+                padding-left : 15px;
+            }
+
+            .radio-label{
+                position: relative;
+                display: flex;
+                align-items: center;              
+                padding-left: 30px;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                min-height : 22px;
+
+                .checkmark {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display : flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 22px;
+                    width: 22px;
+                    border : 2px solid $primary;
+                    background-color: $blanc;
+                    border-radius: 100vmax;
+
+                    &::after{
+                        position : absolute;
+                        content : '';
+                        display : none;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 100vmax;
+                        background: $primary;
+                    }
+                }
+
+                input{
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+
+                    &:checked{
+                        ~ .checkmark{
+                            &::after{
+                                display: flex;
+                            }    
+                        } 
+                    }
+                }    
+            }
+        }
+
+        .row{
+            display : flex;
+            align-items: center;
+            gap : 2.5vw;
+            width : 100%;
         }
 
         .error-message{
@@ -48,4 +135,3 @@
         }
     }
 }
-   
