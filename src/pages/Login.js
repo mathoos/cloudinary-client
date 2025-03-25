@@ -7,10 +7,10 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../utilities/Server";
 import { setToken } from "../utilities/Slice";
 
-import './Home.scss';
+import './Login.scss';
 
 
-function Home() {
+function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -97,4 +97,4 @@ function Home() {
 }
 
 
-export default Home;
+export default Login;
