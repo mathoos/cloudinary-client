@@ -1,68 +1,28 @@
 @import "../style.scss";
 
 .nav{
-    position : fixed;
-    top : 0;
-    left : 0;
+    //position : fixed;
+    // top : 0;
+    // left : 0;
     display : flex;
     justify-content: flex-end;
-    width : 100%;
-    padding : 2vh 2.5vw;
-    background-color: $primary;
+    width : auto;
+    height : 100%;
+    padding : 2.5vw;
+    background-color: $blanc;
+    border-radius : 25px;
     z-index : 100;
 
-    @media screen and (max-width:990px){
-        position : fixed;
-        align-items: center;
-        padding : 2.5vh 30px;
-    }
 
     &_links{
-        position : relative;
         display : flex;
-        align-items : center;
-        justify-content: space-between;
+        flex-direction: column;
         gap : 3.5vw;
-        padding : 0 5vw;
-        width : 55vw;
 
-        @media screen and (max-width:990px){
-            display : none;
-        }
-
-        &-link{
-            position : relative;
-            display : flex;
-            align-items: center;
-            gap : 1vw;
-            font-size : 1.25vw;
-            font-weight : 600;    
-            color : $secondary;         
+        &-link{  
+            color : $gris-dark;   
+            text-wrap: nowrap;    
             cursor: pointer;  
-            transition : .3s ease;
-            
-            &::after{
-                position : absolute;
-                content :"";
-                left : 50%;
-                bottom : -20%;
-                transform : translateX(-50%);
-                width : 0;
-                height : 1px;
-                background-color: $primary;
-                transition : .5s ease;
-                z-index : -2;
-            }         
-
-            &:hover{
-                &::after{
-                    width : 50%;
-                }
-            }
-        }
-
-        .bouton{
-            min-height : 5vh;
         }
     }
 

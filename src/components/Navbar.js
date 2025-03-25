@@ -26,25 +26,12 @@ const Navbar = ({ isUserPage , isHomePage }) => {
         <nav className="nav">
 
             <div className="nav_links">
-                {isUserPage && (
-                    <button className="nav_links-link" onClick={handleLogout}>Déconnexion</button>
-                )}
-                
-                {isHomePage && (
-                    <>
-                        <a href="#entreprise" className="nav_links-link">L'entreprise</a>
-                        <a href="#prestations" className="nav_links-link">Prestations</a>
-                        <a href="/realisations" className="nav_links-link">Réalisations</a>
-                        <Link to="tel:0235607629" className="bouton bouton_noir">02 35 60 76 29</Link>
-                    </>
-                )}
+                <Link to="/" className="nav_links-link">Home</Link>
+                <Link to="/" className="nav_links-link">Créer un article</Link>
+                <Link to="/" className="nav_links-link">Settings</Link>           
+                <button className="nav_links-link" onClick={handleLogout}>Déconnexion</button>
             </div>
             
-            <button className="nav_menu">
-                <div className="nav_menu-barre"></div>
-                <div className="nav_menu-barre"></div>
-                <div className="nav_menu-barre"></div>
-            </button>
         </nav>     
     )
 }

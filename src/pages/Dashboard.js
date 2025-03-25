@@ -113,85 +113,89 @@ useEffect(() => {
 }, [token, id, navigate, fetchData, fetchUserInfo]);
 
     return (
-        <div className="user">
-            <Navbar isUserPage={true} />
-            <div className="container">
+        <div className="dashboard">
+            
+            <div className="dashboard_container">
+                <Navbar/>
+                <div className="dashboard_container-content">
 
-                <div className="container_name">
-                    <h2>Bonjour {userInfo.prenom}</h2>
-                    {userInfo.profileImageUrl && (
-                        <div className="container_name-img">
-                            <img src={userInfo.profileImageUrl} alt="Profile" />
-                        </div>
+                    <div className="dashboard_container-content--user">
+                        <h2>Bonjour {userInfo.prenom} !</h2>
+                        {userInfo.profileImageUrl && (
+                            <div className="user-img">
+                                <img src={userInfo.profileImageUrl} alt="Profile" />
+                            </div>
+                        )}
+                    </div>
+                    
+                    <div className="container_buttons">
+                        <button className="bouton" onClick={handleEditButtonClick}>Modifier mes informations</button>
+                        <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>
+                    </div>
+
+                    {isEditing && (
+                        <form onSubmit={handleFormSubmit}>
+                            <div>
+                                <label htmlFor="nom">Nom</label>
+                                <input
+                                    type="text"
+                                    id="nom"
+                                    name="nom"
+                                    value={userInfo.nom}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="prenom">Prénom</label>
+                                <input
+                                    type="text"
+                                    id="prenom"
+                                    name="prenom"
+                                    value={userInfo.prenom}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="genre">Genre</label>
+                                <select
+                                    id="genre"
+                                    name="genre"
+                                    value={userInfo.genre}
+                                    onChange={handleInputChange}
+                                    required
+                                >
+                                    <option value="">Choisir un genre</option>
+                                    <option value="Homme">Homme</option>
+                                    <option value="Femme">Femme</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label htmlFor="profileImage">Image de Profil</label>
+                                <input
+                                    type="file"
+                                    id="profileImage"
+                                    name="profileImage"
+                                    onChange={handleImageChange}
+                                />
+                            </div>
+                            <button type="submit">Enregistrer</button>
+                        </form>
                     )}
+                    <div className="container_images">
+                        {things.length > 0 ? (
+                            things.map(thing => (
+                                <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
+                                    <img src={thing.imageUrl} alt={thing.title} />
+                                </div>
+                            ))
+                        ) : (
+                            <p>Vous n'avez créé aucun objet.</p>
+                        )}
+                    </div>
                 </div>
                 
-                <div className="container_buttons">
-                    <button className="bouton" onClick={handleEditButtonClick}>Modifier mes informations</button>
-                    <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>
-                </div>
-
-                {isEditing && (
-                    <form onSubmit={handleFormSubmit}>
-                        <div>
-                            <label htmlFor="nom">Nom</label>
-                            <input
-                                type="text"
-                                id="nom"
-                                name="nom"
-                                value={userInfo.nom}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="prenom">Prénom</label>
-                            <input
-                                type="text"
-                                id="prenom"
-                                name="prenom"
-                                value={userInfo.prenom}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="genre">Genre</label>
-                            <select
-                                id="genre"
-                                name="genre"
-                                value={userInfo.genre}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="">Choisir un genre</option>
-                                <option value="Homme">Homme</option>
-                                <option value="Femme">Femme</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label htmlFor="profileImage">Image de Profil</label>
-                            <input
-                                type="file"
-                                id="profileImage"
-                                name="profileImage"
-                                onChange={handleImageChange}
-                            />
-                        </div>
-                        <button type="submit">Enregistrer</button>
-                    </form>
-                )}
-                <div className="container_images">
-                    {things.length > 0 ? (
-                        things.map(thing => (
-                            <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
-                                <img src={thing.imageUrl} alt={thing.title} />
-                            </div>
-                        ))
-                    ) : (
-                        <p>Vous n'avez créé aucun objet.</p>
-                    )}
-                </div>
             </div>
 
             <Form

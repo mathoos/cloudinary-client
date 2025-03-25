@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
+button{
+    background-color : transparent;
+    outline: none;
+    border : none;
+}
+
 body,html {
     box-sizing: border-box;  
     overflow-x : hidden;

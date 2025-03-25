@@ -170,7 +170,7 @@ export const createObject = async (title, description, tag, image, token) => {
 export const getObjectsByUser = async (userId, token) => {
 
     try {
-        const response = await fetch(`${API_BASE_OBJECT}/dashboard/${userId}`, {
+        const response = await fetch(`${API_BASE_OBJECT}/user/${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
