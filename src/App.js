@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Homepage from './pages/Homepage';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import User from './pages/User';
@@ -12,8 +13,9 @@ function App() {
     return (
 
         <Router>
-            <Routes>      
-                <Route path="/" element={<Home/>}/>
+            <Routes>  
+                <Route path="/" element={<Homepage/>}/>    
+                <Route path="/home" element={<Home/>}/>
                 <Route path="/sign-up" element={<Signup/>}/>
                 <Route path="/user/:id" element={<User/>}/>
                 <Route path="/stuff" element={<Stuff/>}/>
