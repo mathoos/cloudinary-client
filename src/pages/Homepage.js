@@ -1,4 +1,3 @@
-
 import PageLayout from "../components/PageLayout";
 import HomepageBackground from "../img/homepage.gif";
 

@@ -1,141 +1,66 @@
 @import "../style.scss";
 
-.home{
+
+.login{
     display : flex;
+    flex-direction: column;
+    gap : 5vh;
     width : 100%;
-    height : 100vh;
 
-    &_title{
-        display : flex;
-        flex-direction: column;
-        justify-content: center;
-        gap : 5vh;
-        width : 45%;
-        height : 100%;
-        background-color: $primary;
-        padding : 0 6.25vw;
 
-        p{
-            font-size: 1.4vw;
-            color : $secondary;
-        }
-
-        &-logo{
-            img{
-                width : 4vw;
-                height : auto;
-            }
-        }
-    }
-        
-    &_login{
+    &_container{
         position : relative;
         display : flex;
         flex-direction: column;
-        justify-content: center;
-        width : 55%;
-        height : 100%;
-        padding : 10vh 10vw;  
-        background-color: $secondary;
+        gap : 2vh;
 
-        &-form{
-            display : flex;
-            flex-direction: column;
-            gap : 5vh;
-            width : 100%;
+        fieldset{
 
-            @media screen and (max-width : 990px){
-                gap : 5vh;
+            input{   
                 width : 100%;
+                min-height : 6vh;
+                padding : 0 15px;
+                border-radius : 100vmax;
+                background-color: $gris;
+                font-weight : 600;
+                color : $noir;
+
+                &:-webkit-autofill {
+                    -webkit-box-shadow:0 0 0 50px $gris inset;
+                    -webkit-text-fill-color: $noir;
+                }
+                
+                &:-webkit-autofill:focus {
+                    -webkit-box-shadow: 0 0 0 50px $gris inset;
+                    -webkit-text-fill-color: $noir;
+                } 
             }
-    
-            &--fieldset{
-                position : relative;
-                display : flex;
-                flex-direction: column;
-                gap : 5vh;
-                @media screen and (max-width : 990px){
-                    gap : 2.5vh;
-                }
-    
-                fieldset{
-                    display : flex;
-                    flex-direction: column;
-                    gap : 1vh;
-                    min-height : 2vw;
-                    @media screen and (max-width : 990px){
-                        gap : 1vh;
-                        min-height : auto;
-                    }
-    
-                    label{
-                        font-weight : 600;
-                        padding-left : 15px;
-                        color : $primary;
-                        @media screen and (max-width : 990px){
-                            font-size: 5vw;
-                            padding-left : 20px;
-                        }
-                    }
-
-                    .input-container {
-                        position : relative;
-                        display: flex;
-                        align-items: center;
-                        width: 100%;   
-                        
-                        
-
-                        .input-field {   
-                            width : 100%;
-                            min-height : 6vh;
-                            padding : 0 15px;
-                            border : 2px solid $primary;
-                            border-radius : 100vmax;
-                            background-color: $blanc; 
-                            font-weight : 600;
-
-                            &.error {
-                                //border-color: $secondary;
-                            }
-
-                            &:-webkit-autofill {
-                                -webkit-box-shadow:0 0 0 50px $blanc inset;
-                                -webkit-text-fill-color: $primary;
-                            }
-                            
-                            &:-webkit-autofill:focus {
-                                -webkit-box-shadow: 0 0 0 50px $blanc inset;
-                                -webkit-text-fill-color: $primary;
-                            } 
-                        }
-
-                        .icon {
-                            position : absolute;
-                            right : 15px;
-                            height : 3vh;
-
-                            img{
-                                width : auto;
-                                height : 100%;
-                            }
-                        }
-                    }   
-                }
-    
-                .error-message{
-                    font-size : .9vw;
-                    font-weight : 600;
-                    padding-left : 15px;
-                    color : $primary;
-                }
-            }
+             
         }
 
-        &-create{
+        .error-message{
             position : absolute;
-            bottom : 10vh;
-            right : 10vw;
+            top : calc(100% + 3px);
+            left : 15px;
+            font-size : .8vw;
+            font-weight : 600;
+            color : $primary;
         }
     }
 }
+
+.create{
+    position : absolute;
+    bottom : 10vh;
+    right : 10vw;
+    border : 1px solid red;
+
+    p{
+        font-size : 1vw;
+        a{
+            font-size : 1vw;
+        }
+        
+    }
+}
+   
