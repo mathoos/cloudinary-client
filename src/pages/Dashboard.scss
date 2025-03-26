@@ -20,13 +20,18 @@
         border : 1px solid red;
 
         &-content{
+            display : flex;
+            flex-direction: column;
+            gap : 3.125vw;
             width : 100%;
-            border : 1px solid black;
+            height : 100%;
+            border : 2px solid black;
 
             &--user{
                 display : flex;
                 justify-content: space-between;
                 align-items: center;
+                height : 5vw;
                 border : 1px solid green;
     
                 .user-img{
@@ -49,84 +54,134 @@
                     }
                 }
             }
+
+            &--blocs {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+                grid-template-rows:1fr 1fr;
+                gap: 3.125vw;
+                width: 100%;
+                height: auto; /* Ajuste la hauteur automatiquement */
+                flex-grow: 1; /* Fait en sorte que .dashboard_container-content--blocs occupe l'espace restant */
+                overflow-y: auto;
+                border: 1px solid rgb(221, 142, 142);
+            
+                .bloc {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5vw;
+                    border-radius: 25px;
+                    padding: 1.5vw;
+                    background-color: $blanc;
+                  
+                    border: 1px solid black;
+                    min-height: 0; /* Important pour éviter que le contenu pousse la hauteur */
+            
+                    &:nth-child(n+5) {
+                        grid-column: span 2; /* Étend sur 2 colonnes */
+                    }
+            
+                    &_container {
+                        display : flex;
+                        flex-direction: column;
+                        gap : 1vw;
+                        flex-grow: 1;
+                        overflow-y: auto;
+                        max-height: 100%;
+                        border: 2px solid red;
+
+                        .card{
+                            display : flex;
+                            gap : 1vw;
+
+                            img{
+                                width : 2vw;
+                                height : 2vw;
+                                object-fit: cover;
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
     
         
     
-        .container_buttons{
-            display : flex;
-            gap : 2.5vw;
-            margin-bottom : 5vh;
+        // .container_buttons{
+        //     display : flex;
+        //     gap : 2.5vw;
+        //     margin-bottom : 5vh;
     
-            .bouton{
-                border-width : 1px;
-                text-transform: none;
-                min-height : 5vh;
-                @media screen and (max-width:990px){
-                    font-size: 5vw;
-                } 
-            }
-        }
+        //     .bouton{
+        //         border-width : 1px;
+        //         text-transform: none;
+        //         min-height : 5vh;
+        //         @media screen and (max-width:990px){
+        //             font-size: 5vw;
+        //         } 
+        //     }
+        // }
     
-        &.container_images{
-            display : flex;
-            flex-wrap: wrap;
-            gap : 2.5vw;
-            @media screen and (max-width : 990px){
-                display : grid;
-                grid-template-columns: repeat(3, 1fr);
-            }
+        // &.container_images{
+        //     display : flex;
+        //     flex-wrap: wrap;
+        //     gap : 2.5vw;
+        //     @media screen and (max-width : 990px){
+        //         display : grid;
+        //         grid-template-columns: repeat(3, 1fr);
+        //     }
            
     
-            .card {
-                position : relative;
-                width : 13.85vw;
-                height : 13.85vw;
-                cursor : pointer;
-                @media screen and (max-width : 990px){
-                    width : 100%;
-                    height : 28vw;  
-                    border-radius : 10px;
-                }
+        //     .card {
+        //         position : relative;
+        //         width : 13.85vw;
+        //         height : 13.85vw;
+        //         cursor : pointer;
+        //         @media screen and (max-width : 990px){
+        //             width : 100%;
+        //             height : 28vw;  
+        //             border-radius : 10px;
+        //         }
     
-                img{
-                    width : 100%;
-                    height : 100%;
-                    border-radius : 20px;
-                    object-fit: cover;
-                }   
+        //         img{
+        //             width : 100%;
+        //             height : 100%;
+        //             border-radius : 20px;
+        //             object-fit: cover;
+        //         }   
 
-                p{
-                    color : $primary;
-                }
+        //         p{
+        //             color : $primary;
+        //         }
     
-                &::after{
-                    position : absolute;
-                    content : "Modifier";
-                    top : 0;
-                    left : 0;
-                    display : flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size : 1.5vw;
-                    color : $blanc;
-                    text-transform: uppercase;
-                    font-family : "Archivo";
-                    font-weight : 700;
-                    width : 100%;
-                    height : 100%;
-                    opacity : 0;
-                    background-color: #37363679;
-                    transition : .3s ease;
-                }
+        //         &::after{
+        //             position : absolute;
+        //             content : "Modifier";
+        //             top : 0;
+        //             left : 0;
+        //             display : flex;
+        //             justify-content: center;
+        //             align-items: center;
+        //             font-size : 1.5vw;
+        //             color : $blanc;
+        //             text-transform: uppercase;
+        //             font-family : "Archivo";
+        //             font-weight : 700;
+        //             width : 100%;
+        //             height : 100%;
+        //             opacity : 0;
+        //             background-color: #37363679;
+        //             transition : .3s ease;
+        //         }
     
-                &:hover{
-                    &::after{
-                        opacity : 1;
-                    }
-                }
-            }
-        }   
+        //         &:hover{
+        //             &::after{
+        //                 opacity : 1;
+        //             }
+        //         }
+        //     }
+        // }   
     }
 }
 

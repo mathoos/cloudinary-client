@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createObject , getObjectsByUser , getUserInfo , updateUserInfo } from "../utilities/Server"; 
 
+import Bloc from "../components/Bloc"
 import Form from '../components/Form';
 import Navbar from '../components/Navbar';
 
@@ -17,6 +18,8 @@ const Dashboard = () => {
     const [modalActive, setModalActive] = useState(false); 
     const [userInfo, setUserInfo] = useState({ nom: "", prenom: "", profileImageUrl: "", profileImage: null });
     const [isEditing, setIsEditing] = useState(false);
+
+    const blocTexts = ["Articles publiés", "Bloc 2", "Bloc 3", "Bloc 4", "Liste des derniers articles", "Bloc 6"];
 
     const closeModal = () => {
         setModalActive(false);
@@ -85,32 +88,32 @@ const Dashboard = () => {
     };
 
    // Déclarez `fetchData` et `fetchUserInfo` avec `useCallback`
-const fetchData = useCallback(async () => {
-    try {
-        const data = await getObjectsByUser(id, token);
-        setThings(data); 
-    } catch (error) {
-        console.error("Une erreur s'est produite lors de la récupération des objets :", error);
-    }
-}, [id, token]);
+    const fetchData = useCallback(async () => {
+        try {
+            const data = await getObjectsByUser(id, token);
+            setThings(data); 
+        } catch (error) {
+            console.error("Une erreur s'est produite lors de la récupération des objets :", error);
+        }
+    }, [id, token]);
 
-const fetchUserInfo = useCallback(async () => {
-    try {
-        const userData = await getUserInfo(token);
-        setUserInfo(userData);
-    } catch (error) {
-        console.error(error.message);
-    }
-}, [token]);
+    const fetchUserInfo = useCallback(async () => {
+        try {
+            const userData = await getUserInfo(token);
+            setUserInfo(userData);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }, [token]);
 
-// Puis utilisez-les dans `useEffect`
-useEffect(() => {
-    if (!token) {
-        navigate('/');
-    }
-    fetchData();
-    fetchUserInfo();
-}, [token, id, navigate, fetchData, fetchUserInfo]);
+    // Puis utilisez-les dans `useEffect`
+    useEffect(() => {
+        if (!token) {
+            navigate('/');
+        }
+        fetchData();
+        fetchUserInfo();
+    }, [token, id, navigate, fetchData, fetchUserInfo]);
 
     return (
         <div className="dashboard">
@@ -127,8 +130,39 @@ useEffect(() => {
                             </div>
                         )}
                     </div>
+
+                    <div className="dashboard_container-content--blocs">
+                        {blocTexts.map((text, index) => (
+                            index === 0 ? (  
+                                <Bloc key={index} text={text}>
+                                    <div className="bloc_container">
+                                        <p>{things.length}</p> 
+                                    </div>
+                                </Bloc>
+                            ) : (
+                                index === 4 ? ( 
+                                    <Bloc key={index} text={text}>
+                                        <div className="bloc_container">
+                                            {things.length > 0 ? (
+                                                things.map(thing => (
+                                                    <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
+                                                        <img src={thing.imageUrl} alt={thing.title} />
+                                                        <h3>{thing.title}</h3>
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <p>Vous n'avez créé aucun objet.</p>
+                                            )}
+                                        </div>
+                                    </Bloc>
+                                ) : (
+                                    <Bloc key={index} text={text} /> 
+                                )
+                            )
+                        ))}
+                    </div>
                     
-                    <div className="container_buttons">
+                    {/* <div className="container_buttons">
                         <button className="bouton" onClick={handleEditButtonClick}>Modifier mes informations</button>
                         <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>
                     </div>
@@ -193,7 +227,7 @@ useEffect(() => {
                         ) : (
                             <p>Vous n'avez créé aucun objet.</p>
                         )}
-                    </div>
+                    </div> */}
                 </div>
                 
             </div>
