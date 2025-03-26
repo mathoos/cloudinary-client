@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Form.scss';
 
-const Form = ({ title, handleSubmit, closeModal, modalActive, initialData }) => {
+const Form = ({ title, handleSubmit, handleClose, initialData }) => {
     
     const [formData, setFormData] = useState({
         title: '',
@@ -19,16 +19,11 @@ const Form = ({ title, handleSubmit, closeModal, modalActive, initialData }) => 
         });
     }, [initialData]);
 
-    const handleModalClick = (event) => {
-        if (modalActive && !event.target.closest('.modal_form')) {
-            closeModal();
-        }
-    };
 
     const handleCloseButtonClick = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        closeModal();
+        handleClose();
     };
 
     const handleInputChange = (e) => {
@@ -46,14 +41,17 @@ const Form = ({ title, handleSubmit, closeModal, modalActive, initialData }) => 
     };
 
     return (
-        <div className={`modal ${modalActive ? 'active' : ''}`} onClick={handleModalClick}>
-            <form className="modal_form" onSubmit={onSubmit}>
-                <button className="modal_form-close" onClick={handleCloseButtonClick}>
-                    <div className="modal_form-close-barre modal_form-close-barre--1"></div>
-                    <div className="modal_form-close-barre modal_form-close-barre--2"></div>
-                </button>
-                <h2>{title}</h2>
-                <div className="modal_form-fieldset">
+
+            <form className="form" onSubmit={onSubmit}>
+                <div className="form_title">
+                    <h2>{title}</h2>
+                    <button className="form_title-close" onClick={handleCloseButtonClick}>
+                        <div className="form_title-close-barre form_title-close-barre--1"></div>
+                        <div className="form_title-close-barre form_title-close-barre--2"></div>
+                    </button>
+                </div>
+                
+                <div className="form-fieldset">
                     <fieldset>
                         <label htmlFor="title">Titre</label>
                         <input type="text" id="title" name="title" value={formData.title} onChange={handleInputChange} required />
@@ -78,12 +76,11 @@ const Form = ({ title, handleSubmit, closeModal, modalActive, initialData }) => 
                         {initialData.image && <img src={initialData.image} alt="Objet" style={{ width: '100px', height: 'auto' }} />}
                         <input type="file" id="file" name="image" onChange={handleImageChange} />
                     </fieldset>
-                </div>
-                <div className="modal_form-bouton">
                     <button className="bouton bouton_noir" type="submit">Valider</button>
                 </div>
+                
             </form>
-        </div>
+
     );
 };
 

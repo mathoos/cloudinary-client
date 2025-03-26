@@ -15,26 +15,28 @@ const Dashboard = () => {
     const navigate = useNavigate();
     const { id } = useParams(); 
     const [things, setThings] = useState([]);
-    const [modalActive, setModalActive] = useState(false); 
+ 
     const [userInfo, setUserInfo] = useState({ nom: "", prenom: "", profileImageUrl: "", profileImage: null });
     const [isEditing, setIsEditing] = useState(false);
+    const [showForm, setShowForm] = useState(false);
 
     
 
-    const closeModal = () => {
-        setModalActive(false);
-    };
 
     const handleAddButtonClick = () => {
-        setModalActive(true); 
+        setShowForm(true);
+    };
+
+    const handleCloseForm = () => {
+        setShowForm(false); 
     };
 
     const handleCreateObjectFormSubmit = async (event, formData) => {
         try {
             await createObject(formData.title, formData.description, formData.tag, formData.image, token);
             event.target.reset(); // Reset du formulaire
-            closeModal();
             fetchData(); // Rafraîchir les données
+            setShowForm(false);
         } 
         catch (error) {
             console.error("Une erreur s'est produite lors de la création de l'objet :", error);
@@ -164,7 +166,55 @@ const Dashboard = () => {
             
             <div className="dashboard_container">
                 <Navbar/>
+
+                {showForm ? (
+                <Form
+                    title="Ajouter une photo"
+                    handleSubmit={handleCreateObjectFormSubmit}
+                    handleClose={handleCloseForm} // Ferme le formulaire quand on clique sur "Annuler"
+                    modalActive={true}
+                    initialData={{ title: '', description: '', tag: '' }}
+                />
+            ) : (
                 <div className="dashboard_container-content">
+                    <div className="dashboard_container-content--user">
+                        <h2>Bonjour {userInfo.prenom} !</h2>
+                        {userInfo.profileImageUrl && (
+                            <div className="user-img">
+                                <img src={userInfo.profileImageUrl} alt="Profile" />
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="dashboard_container-content--blocs">
+                        {blocData.map((bloc, index) => (
+                            <Bloc key={index} title={bloc.title} subtitle={bloc.subtitle} data={bloc.data} buttons={bloc.buttons}>
+                                {bloc.content ? (
+                                    <div className="bloc_container">
+                                        {bloc.content.length > 0 ? (
+                                            bloc.content.map(thing => (
+                                                <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
+                                                    <img src={thing.imageUrl} alt={thing.title} />
+                                                    <h3>{thing.title}</h3>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <p>Vous n'avez créé aucun objet.</p>
+                                        )}
+                                    </div>
+                                ) : null}
+                            </Bloc>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+
+
+
+
+
+                {/* <div className="dashboard_container-content">
 
                     <div className="dashboard_container-content--user">
                         <h2>Bonjour {userInfo.prenom} !</h2>
@@ -200,7 +250,7 @@ const Dashboard = () => {
                 
 
 
-                    {/* {isEditing && (
+                    {isEditing && (
                         <form onSubmit={handleFormSubmit}>
                             <div>
                                 <label htmlFor="nom">Nom</label>
@@ -249,29 +299,18 @@ const Dashboard = () => {
                             </div>
                             <button type="submit">Enregistrer</button>
                         </form>
-                    )} */}
-                    {/* <div className="container_images">
-                        {things.length > 0 ? (
-                            things.map(thing => (
-                                <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
-                                    <img src={thing.imageUrl} alt={thing.title} />
-                                </div>
-                            ))
-                        ) : (
-                            <p>Vous n'avez créé aucun objet.</p>
-                        )}
-                    </div> */}
-                </div>
+                    )} 
+                </div> */}
                 
             </div>
 
-            <Form
+            {/* <Form
                 title="Ajouter une photo"
                 handleSubmit={handleCreateObjectFormSubmit}
                 closeModal={closeModal} 
                 modalActive={modalActive}
                 initialData={{ title: '', description: '', tag: '' }}
-            />
+            /> */}
         </div>
     );
 }
