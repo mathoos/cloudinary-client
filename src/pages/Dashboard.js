@@ -19,40 +19,7 @@ const Dashboard = () => {
     const [userInfo, setUserInfo] = useState({ nom: "", prenom: "", profileImageUrl: "", profileImage: null });
     const [isEditing, setIsEditing] = useState(false);
 
-    const blocData = [
-        { 
-            title: "Articles publiés", 
-            subtitle: "Les articles publiés et visibles sur votre site.",
-            data : things.length, 
-            content: null
-        },
-        { 
-            title: "Brouillons enregistrés", 
-            subtitle: "Les articles non visibles sur votre site.", 
-            content: null
-        },
-        { 
-            title: "Total de vues", 
-            subtitle: "Statistiques des vues de vos articles.", 
-            content: null
-        },
-        { 
-            title: "Total d'articles", 
-            subtitle: "Les articles publiés et brouillons confondus.", 
-            content: null 
-        },
-        { 
-            title: "Articles à la une", 
-            subtitle: "Liste des articles que vous avez définis à la une. e sont les 3 articles qui apparaitront en tête.", 
-            data : "",
-            content: things 
-        },
-        { 
-            title: "Créer un article", 
-            subtitle: "Formulaire pour ajouter un article", 
-            content: null 
-        },
-    ];
+    
 
     const closeModal = () => {
         setModalActive(false);
@@ -148,6 +115,50 @@ const Dashboard = () => {
         fetchUserInfo();
     }, [token, id, navigate, fetchData, fetchUserInfo]);
 
+    const blocData = [
+        { 
+            title: "Articles publiés", 
+            subtitle: "Les articles publiés et visibles sur votre site.",
+            data : things.length, 
+            content: null
+        },
+        { 
+            title: "Brouillons enregistrés", 
+            subtitle: "Les articles non visibles sur votre site.", 
+            content: null
+        },
+        { 
+            title: "Total de vues", 
+            subtitle: "Statistiques des vues de vos articles.", 
+            content: null
+        },
+        { 
+            title: "Total d'articles", 
+            subtitle: "Les articles publiés et brouillons confondus.", 
+            content: null 
+        },
+        { 
+            title: "Articles à la une", 
+            subtitle: "Liste des articles que vous avez définis à la une. e sont les 3 articles qui apparaitront en tête.", 
+            content: things 
+        },
+        { 
+            title: "Créer un article", 
+            subtitle: "Formulaire pour ajouter un article", 
+            buttons: [
+                {
+                    text: "Modifier mes informations",
+                    onClick: handleEditButtonClick
+                },
+                {
+                    text: "Ajouter",
+                    onClick: handleAddButtonClick
+                }
+            ],
+            content: null 
+        },
+    ];
+
     return (
         <div className="dashboard">
             
@@ -166,7 +177,7 @@ const Dashboard = () => {
 
                     <div className="dashboard_container-content--blocs">
                         {blocData.map((bloc, index) => (
-                            <Bloc key={index} title={bloc.title} subtitle={bloc.subtitle} data={bloc.data}>
+                            <Bloc key={index} title={bloc.title} subtitle={bloc.subtitle} data={bloc.data} buttons={bloc.buttons}>
                                 
 
                                 {bloc.content ? (
@@ -186,13 +197,10 @@ const Dashboard = () => {
                             </Bloc>
                         ))}
                     </div>
-                    
-                    {/* <div className="container_buttons">
-                        <button className="bouton" onClick={handleEditButtonClick}>Modifier mes informations</button>
-                        <button className="bouton" onClick={handleAddButtonClick}>Ajouter</button>
-                    </div>
+                
 
-                    {isEditing && (
+
+                    {/* {isEditing && (
                         <form onSubmit={handleFormSubmit}>
                             <div>
                                 <label htmlFor="nom">Nom</label>
@@ -241,8 +249,8 @@ const Dashboard = () => {
                             </div>
                             <button type="submit">Enregistrer</button>
                         </form>
-                    )}
-                    <div className="container_images">
+                    )} */}
+                    {/* <div className="container_images">
                         {things.length > 0 ? (
                             things.map(thing => (
                                 <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>

@@ -1,4 +1,4 @@
-const Bloc = ({ title, subtitle, data, children }) => {
+const Bloc = ({ title, subtitle, data, buttons, children }) => {
     return (
         <div className="bloc">
             <div className="bloc_title">
@@ -7,6 +7,13 @@ const Bloc = ({ title, subtitle, data, children }) => {
             </div>
             <div className="bloc_data">
                 <p>{data}</p>
+            </div>
+            <div className="bloc_buttons">
+                {buttons && buttons.map((button, index) => (
+                    <button key={index} onClick={button.onClick} className="bouton">
+                        {button.text}
+                    </button>
+                ))}
             </div>
             
             {children} 
