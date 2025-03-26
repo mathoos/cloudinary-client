@@ -19,7 +19,40 @@ const Dashboard = () => {
     const [userInfo, setUserInfo] = useState({ nom: "", prenom: "", profileImageUrl: "", profileImage: null });
     const [isEditing, setIsEditing] = useState(false);
 
-    const blocTexts = ["Articles publiés", "Bloc 2", "Bloc 3", "Bloc 4", "Liste des derniers articles", "Bloc 6"];
+    const blocData = [
+        { 
+            title: "Articles publiés", 
+            subtitle: "Les articles publiés et visibles sur votre site.",
+            data : things.length, 
+            content: null
+        },
+        { 
+            title: "Brouillons enregistrés", 
+            subtitle: "Les articles non visibles sur votre site.", 
+            content: null
+        },
+        { 
+            title: "Total de vues", 
+            subtitle: "Statistiques des vues de vos articles.", 
+            content: null
+        },
+        { 
+            title: "Total d'articles", 
+            subtitle: "Les articles publiés et brouillons confondus.", 
+            content: null 
+        },
+        { 
+            title: "Articles à la une", 
+            subtitle: "Liste des articles que vous avez définis à la une. e sont les 3 articles qui apparaitront en tête.", 
+            data : "",
+            content: things 
+        },
+        { 
+            title: "Créer un article", 
+            subtitle: "Formulaire pour ajouter un article", 
+            content: null 
+        },
+    ];
 
     const closeModal = () => {
         setModalActive(false);
@@ -132,33 +165,25 @@ const Dashboard = () => {
                     </div>
 
                     <div className="dashboard_container-content--blocs">
-                        {blocTexts.map((text, index) => (
-                            index === 0 ? (  
-                                <Bloc key={index} text={text}>
+                        {blocData.map((bloc, index) => (
+                            <Bloc key={index} title={bloc.title} subtitle={bloc.subtitle} data={bloc.data}>
+                                
+
+                                {bloc.content ? (
                                     <div className="bloc_container">
-                                        <p>{things.length}</p> 
+                                        {bloc.content.length > 0 ? (
+                                            bloc.content.map(thing => (
+                                                <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
+                                                    <img src={thing.imageUrl} alt={thing.title} />
+                                                    <h3>{thing.title}</h3>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <p>Vous n'avez créé aucun objet.</p>
+                                        )}
                                     </div>
-                                </Bloc>
-                            ) : (
-                                index === 4 ? ( 
-                                    <Bloc key={index} text={text}>
-                                        <div className="bloc_container">
-                                            {things.length > 0 ? (
-                                                things.map(thing => (
-                                                    <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
-                                                        <img src={thing.imageUrl} alt={thing.title} />
-                                                        <h3>{thing.title}</h3>
-                                                    </div>
-                                                ))
-                                            ) : (
-                                                <p>Vous n'avez créé aucun objet.</p>
-                                            )}
-                                        </div>
-                                    </Bloc>
-                                ) : (
-                                    <Bloc key={index} text={text} /> 
-                                )
-                            )
+                                ) : null}
+                            </Bloc>
                         ))}
                     </div>
                     

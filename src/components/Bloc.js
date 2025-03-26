@@ -1,7 +1,14 @@
-const Bloc = ({ text, children }) => {
+const Bloc = ({ title, subtitle, data, children }) => {
     return (
         <div className="bloc">
-            <h3>{text}</h3>
+            <div className="bloc_title">
+                <h3>{title}</h3>
+                <p>{subtitle}</p>
+            </div>
+            <div className="bloc_data">
+                <p>{data}</p>
+            </div>
+            
             {children} 
         </div>
     );
