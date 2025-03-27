@@ -8,6 +8,7 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
         description: '',
         tag: '',
         image: null,
+        published: false, 
     });
 
     useEffect(() => {
@@ -27,8 +28,11 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
     };
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const { name, value, type, checked } = e.target;
+        setFormData({ 
+            ...formData, 
+            [name]: type === "checkbox" ? checked : value 
+        });
     };
 
     const handleImageChange = (e) => {
@@ -37,7 +41,14 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        handleSubmit(e, formData);
+    
+        // Assurer que published est bien un booléen
+        const finalFormData = {
+            ...formData,
+            published: formData.published || false, // Assigne false si la case est décochée
+        };
+    
+        handleSubmit(e, finalFormData);
     };
 
     return (
@@ -75,6 +86,16 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
                         <label htmlFor="file">Image actuelle :</label>
                         {initialData.image && <img src={initialData.image} alt="Objet" style={{ width: '100px', height: 'auto' }} />}
                         <input type="file" id="file" name="image" onChange={handleImageChange} />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="published">Publier l'objet</label>
+                        <input 
+                            type="checkbox" 
+                            id="published" 
+                            name="published" 
+                            checked={!!formData.published}  // Convertit undefined en false
+                            onChange={(e) => setFormData({ ...formData, published: e.target.checked })} 
+                        />
                     </fieldset>
                     <button className="bouton bouton_noir" type="submit">Valider</button>
                 </div>

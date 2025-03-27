@@ -33,7 +33,7 @@ const Dashboard = () => {
 
     const handleCreateObjectFormSubmit = async (event, formData) => {
         try {
-            await createObject(formData.title, formData.description, formData.tag, formData.image, token);
+            await createObject(formData.title, formData.description, formData.tag, formData.image, formData.published, token);
             event.target.reset(); // Reset du formulaire
             fetchData(); // Rafraîchir les données
             setShowForm(false);
