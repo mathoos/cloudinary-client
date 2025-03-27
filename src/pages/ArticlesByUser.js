@@ -116,6 +116,17 @@ const ArticlesByUser = () => {
                         </div>
 
                         <div className="dashboard_container-content--stuff">
+                            <div className="card">
+                                <div className="card_image">
+                                    <p className="title">Image</p>
+                                </div>
+                                <div className="card_text">
+                                    <p className="title">Titre</p>
+                                    <p className="title">Description</p>
+                                    <p className="title">Date</p>
+                                </div>
+                              
+                            </div>
                             {things.length > 0 ? (
                                 things.map(thing => (
                                     <div key={thing._id} className="card">
@@ -125,23 +136,24 @@ const ArticlesByUser = () => {
                                             <p className={thing.published ? "status published" : "status draft"}>
                                                 {thing.published ? "Publié" : "Brouillon"}
                                             </p>
+                                            <p>{thing.date}</p>
                                         </div>
                                         
                                         <div className="card_buttons">
                                             <button 
-                                                className="bouton bouton_primary" 
+                                                className="bouton bouton_primary bouton_petit" 
                                                 onClick={() => handleViewArticle(thing._id)}
                                             >
                                                 Voir
                                             </button>
                                             <button 
-                                                className="bouton bouton_primary" 
+                                                className="bouton bouton_primary bouton_petit" 
                                                 onClick={() => handleEditButtonClick(thing)}
                                             >
                                                 Modifier
                                             </button>
                                             <button 
-                                                className="bouton bouton_primary" 
+                                                className="bouton bouton_primary bouton_petit" 
                                                 onClick={() => handleDeleteButtonClick(thing._id)}
                                             >
                                                 Supprimer

@@ -136,10 +136,19 @@
                 overflow-y : auto;
 
                 .card{
-                    display : flex;
-                    justify-content: space-between;
+                    display : grid;
+                    grid-template-columns: 5vw 2fr 1fr;
                     align-items: center;
                     gap : 1vw;
+
+                    &_image{
+                        width : 5vw;
+
+                        p{
+                            font-weight : bold;
+                            text-align : center;
+                        }
+                    }
 
                     img{
                         width : 5vw;
@@ -149,18 +158,22 @@
 
                     &_text{
                         display : flex;
+                        gap : 1vw;
                         flex-grow: 1;
 
                         p{
                             width : 100%;
                             text-align : center;
+
+                            &.title{
+                                font-weight : bold;
+                            }
                         }
                     }
 
-                    
-
                     &_buttons{
                         display : flex;
+                        justify-content: flex-end;
                         gap : 1vw;
                     }
                 }
