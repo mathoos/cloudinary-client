@@ -46,9 +46,6 @@ const Dashboard = () => {
         }
     };
 
-    const handleCardClick = async (objectId) => {
-        navigate(`/image?id=${objectId}&token=${encodeURIComponent(token)}`);
-    };
 
     const handleEditButtonClick = () => {
         setIsEditing(true); 
@@ -148,7 +145,7 @@ const Dashboard = () => {
             content: things,
             link: { 
                 text: "Voir", 
-                url: "/stuff" 
+                url: `/stuff/${id}` 
             }
         },
         { 
@@ -200,7 +197,7 @@ const Dashboard = () => {
                                     <div className="bloc_container">
                                         {bloc.content.length > 0 ? (
                                             bloc.content.map(thing => (
-                                                <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
+                                                <div key={thing._id} className="card">
                                                     <img src={thing.imageUrl} alt={thing.title} />
                                                     <h3>{thing.title}</h3>
                                                 </div>
