@@ -4,6 +4,7 @@ import Homepage from './pages/Homepage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import ArticlesByUser from './pages/ArticlesByUser';
 import Stuff from './pages/Stuff';
 import Image from './pages/Image';
 
@@ -18,7 +19,8 @@ function App() {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/dashboard/:id" element={<Dashboard/>}/>
-                <Route path="/stuff/:id" element={<Stuff />} />
+                <Route path="/mes-articles/:id" element={<ArticlesByUser/>}/>
+                <Route path="/stuff/" element={<Stuff />} />
                 <Route path="/stuff" element={<Stuff/>}/>
                 <Route path="/image" element={<Image/>}/>
             </Routes>

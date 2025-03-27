@@ -12,12 +12,14 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
     });
 
     useEffect(() => {
-        setFormData({
+        setFormData(prev => ({
+            ...prev,
             title: initialData.title || '',
             description: initialData.description || '',
             tag: initialData.tag || '',
-            image: null, 
-        });
+            image: initialData.image || null,
+            published: Boolean(initialData.published), // 🔥 Assure que c'est un booléen
+        }));
     }, [initialData]);
 
 
@@ -29,10 +31,10 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
 
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
-        setFormData({ 
-            ...formData, 
+        setFormData(prev => ({ 
+            ...prev, 
             [name]: type === "checkbox" ? checked : value 
-        });
+        }));
     };
 
     const handleImageChange = (e) => {
@@ -45,7 +47,7 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
         // Assurer que published est bien un booléen
         const finalFormData = {
             ...formData,
-            published: formData.published || false, // Assigne false si la case est décochée
+            published: Boolean(formData.published), // 🔥 Convertit en booléen pour éviter les erreurs
         };
     
         handleSubmit(e, finalFormData);
@@ -93,8 +95,8 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
                             type="checkbox" 
                             id="published" 
                             name="published" 
-                            checked={!!formData.published}  // Convertit undefined en false
-                            onChange={(e) => setFormData({ ...formData, published: e.target.checked })} 
+                            checked={!!formData.published}  // 🔥 Assure que `false` est bien pris en compte
+                            onChange={handleInputChange} 
                         />
                     </fieldset>
                     <button className="bouton bouton_noir" type="submit">Valider</button>

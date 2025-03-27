@@ -145,7 +145,7 @@ const Dashboard = () => {
             content: things,
             link: { 
                 text: "Voir", 
-                url: `/stuff/${id}` 
+                url: `/mes-articles/${id}` 
             }
         },
         { 
@@ -173,9 +173,9 @@ const Dashboard = () => {
 
                 {showForm ? (
                 <Form
-                    title="Ajouter une photo"
+                    title="Ajouter un article"
                     handleSubmit={handleCreateObjectFormSubmit}
-                    handleClose={handleCloseForm} // Ferme le formulaire quand on clique sur "Annuler"
+                    handleClose={handleCloseForm} 
                     modalActive={true}
                     initialData={{ title: '', description: '', tag: '' }}
                 />
