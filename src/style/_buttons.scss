@@ -9,14 +9,17 @@
     font-weight : 600;
     cursor : pointer;
     border-radius: 100vmax; 
-    background-color: $primary;
     border : none;
-    color : $gris-dark;
     transition : .3s ease;
     z-index : 1;
 
-    &:hover{
-        color : $primary;
-        background-color: $gris-dark;
+    &_primary{
+        background-color: $primary;
+        color : $gris-dark;
+    }
+
+    &_gris{
+        background-color: $gris;
+        color : $gris-dark;
     }
 }

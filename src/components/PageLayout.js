@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./PageLayout.scss";
 
-function PageLayout({ title, description, buttonText, buttonLink, children, backgroundImage, signupText, logo }) {
+function PageLayout({ title, description, buttonText, buttonLink, secondButtonText, secondButtonLink,children, backgroundImage, signupText, logo }) {
     return (
         <div className="page-layout">
             <div className="page-layout_container">
@@ -12,11 +12,18 @@ function PageLayout({ title, description, buttonText, buttonLink, children, back
                     <div className="page-layout_container-text--title">
                         <h1 dangerouslySetInnerHTML={{ __html: title }} />
                         {description && <p className="subtitle">{description}</p>}
-                        {buttonText && buttonLink && (
-                            <Link to={buttonLink}>
-                                <button className="bouton">{buttonText}</button>
-                            </Link>
-                        )}
+                        <div className="buttons-container"> 
+                            {buttonText && buttonLink && (
+                                <Link to={buttonLink}>
+                                    <button className="bouton bouton_primary">{buttonText}</button>
+                                </Link>
+                            )}
+                            {secondButtonText && secondButtonLink && (
+                                <Link to={secondButtonLink}>
+                                    <button className="bouton bouton_gris">{secondButtonText}</button>
+                                </Link>
+                            )}
+                        </div>
                         {children}
                     </div>
                     

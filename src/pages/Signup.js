@@ -192,7 +192,7 @@ function Signup() {
                     </fieldset>
                 </div>
 
-                <button className="bouton" type="submit">S'inscrire</button>
+                <button className="bouton bouton_primary" type="submit">S'inscrire</button>
     
             </form>
             
