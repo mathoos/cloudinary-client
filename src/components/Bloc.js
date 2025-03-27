@@ -1,8 +1,17 @@
-const Bloc = ({ title, subtitle, data, buttons, children }) => {
+import {Link} from "react-router-dom";
+
+const Bloc = ({ title, subtitle, data, buttons, link, children }) => {
     return (
         <div className="bloc">
             <div className="bloc_title">
-                <h3>{title}</h3>
+                <div className="bloc_title-up">
+                    <h3>{title}</h3>
+                    {link && (
+                        <Link to={link.url} className="bouton bouton_primary bouton_petit">
+                            {link.text}
+                        </Link>
+                    )}
+                </div>    
                 <p>{subtitle}</p>
             </div>
             {data !== undefined && data !== null && (

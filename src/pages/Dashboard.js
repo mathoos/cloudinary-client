@@ -145,7 +145,11 @@ const Dashboard = () => {
         { 
             title: "Tous mes articles.", 
             subtitle: "Total de tous les articles, publiés et brouillons confondus.", 
-            content: things 
+            content: things,
+            link: { 
+                text: "Voir", 
+                url: "/stuff" 
+            }
         },
         { 
             title: "Créer un article", 
@@ -191,7 +195,7 @@ const Dashboard = () => {
 
                     <div className="dashboard_container-content--blocs">
                         {blocData.map((bloc, index) => (
-                            <Bloc key={index} title={bloc.title} subtitle={bloc.subtitle} data={bloc.data} buttons={bloc.buttons}>
+                            <Bloc key={index} title={bloc.title} subtitle={bloc.subtitle} data={bloc.data} link={bloc.link} buttons={bloc.buttons}>
                                 {bloc.content ? (
                                     <div className="bloc_container">
                                         {bloc.content.length > 0 ? (
@@ -307,13 +311,6 @@ const Dashboard = () => {
                 
             </div>
 
-            {/* <Form
-                title="Ajouter une photo"
-                handleSubmit={handleCreateObjectFormSubmit}
-                closeModal={closeModal} 
-                modalActive={modalActive}
-                initialData={{ title: '', description: '', tag: '' }}
-            /> */}
         </div>
     );
 }
