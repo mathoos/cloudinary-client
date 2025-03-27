@@ -125,7 +125,6 @@ const Dashboard = () => {
             title: "Articles publiés", 
             subtitle: "Les articles publiés et visibles sur votre site.",
             data : publishedArticles.length,
-            content: null
         },
         { 
             title: "Brouillons enregistrés", 

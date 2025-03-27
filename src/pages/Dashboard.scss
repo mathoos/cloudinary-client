@@ -29,7 +29,6 @@
                 display : flex;
                 justify-content: space-between;
                 align-items: center;    
-                border : 1px solid green;
     
                 .user-img{
                     width : 3.5vw;
@@ -47,14 +46,13 @@
 
             &--blocs {
                 display: grid;
-                grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+                grid-template-columns: repeat(4, 1fr); 
                 grid-template-rows : 1fr 1.5fr;
                 gap: 3.125vw;
                 width: 100%;
-                height: auto; /* Ajuste la hauteur automatiquement */
-                flex-grow: 1; /* Fait en sorte que .dashboard_container-content--blocs occupe l'espace restant */
+                height: auto; 
+                flex-grow: 1; 
                 overflow-y: auto;
-                border: 1px solid rgb(221, 142, 142);
             
                 .bloc {
                     display: flex;
@@ -64,11 +62,11 @@
                     border-radius: 25px;
                     padding: 1.5vw;
                     background-color: $blanc;
-                    border: 1px solid black;
-                    min-height: 0; /* Important pour éviter que le contenu pousse la hauteur */
+                    border: 1px solid $gris-dark;
+                    min-height: 0; 
             
                     &:nth-child(n+5) {
-                        grid-column: span 2; /* Étend sur 2 colonnes */
+                        grid-column: span 2;
                     }
 
                     &_title{
@@ -81,11 +79,16 @@
                     &_data{
                         display : flex;
                         justify-content: flex-end;
+                        background-color: purple;;
 
                         p{
                             font-size : 3vw;
                             font-weight : bold;
                         }
+                    }
+
+                    &_buttons{
+                        background-color: green;
                     }
             
                     &_container {
@@ -96,6 +99,7 @@
                         overflow-y: auto;
                         height : 100%;
                         max-height: 100%;
+                        background-color: blue;;
 
                         .card{
                             display : flex;
