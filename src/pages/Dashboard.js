@@ -15,6 +15,9 @@ const Dashboard = () => {
     const navigate = useNavigate();
     const { id } = useParams(); 
     const [things, setThings] = useState([]);
+    const publishedArticles = things.filter(thing => thing.published);
+    const draftArticles = things.filter(thing => !thing.published);
+
  
     const [userInfo, setUserInfo] = useState({ nom: "", prenom: "", profileImageUrl: "", profileImage: null });
     const [isEditing, setIsEditing] = useState(false);
@@ -121,12 +124,13 @@ const Dashboard = () => {
         { 
             title: "Articles publiés", 
             subtitle: "Les articles publiés et visibles sur votre site.",
-            data : things.length, 
+            data : publishedArticles.length,
             content: null
         },
         { 
             title: "Brouillons enregistrés", 
             subtitle: "Les articles non visibles sur votre site.", 
+            data : draftArticles.length,
             content: null
         },
         { 
@@ -135,13 +139,13 @@ const Dashboard = () => {
             content: null
         },
         { 
-            title: "Total d'articles", 
-            subtitle: "Les articles publiés et brouillons confondus.", 
+            title: "Articles à la une.", 
+            subtitle: "Liste des 3 articles que vous avez définis à la une.", 
             content: null 
         },
         { 
-            title: "Articles à la une", 
-            subtitle: "Liste des articles que vous avez définis à la une. e sont les 3 articles qui apparaitront en tête.", 
+            title: "Tous mes articles.", 
+            subtitle: "Total de tous les articles, publiés et brouillons confondus.", 
             content: things 
         },
         { 
