@@ -118,6 +118,9 @@ const ArticlesByUser = () => {
                                     <div key={thing._id} className="card">
                                         <img src={thing.imageUrl} alt={thing.title} />
                                         <p>{thing.title}</p>
+                                        <p className={thing.published ? "status published" : "status draft"}>
+                                            {thing.published ? "Publié" : "Brouillon"}
+                                        </p>
                                         <button 
                                             className="bouton bouton_primary" 
                                             onClick={() => handleEditButtonClick(thing)}
