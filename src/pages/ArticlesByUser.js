@@ -83,6 +83,9 @@ const ArticlesByUser = () => {
         }
     };
     
+    const handleViewArticle = (thingId) => {
+        navigate(`/article/${thingId}`);
+    };
     
     
     
@@ -117,23 +120,33 @@ const ArticlesByUser = () => {
                                 things.map(thing => (
                                     <div key={thing._id} className="card">
                                         <img src={thing.imageUrl} alt={thing.title} />
-                                        <p>{thing.title}</p>
-                                        <p className={thing.published ? "status published" : "status draft"}>
-                                            {thing.published ? "Publié" : "Brouillon"}
-                                        </p>
-                                        <button 
-                                            className="bouton bouton_primary" 
-                                            onClick={() => handleEditButtonClick(thing)}
-                                        >
-                                            Modifier
-                                        </button>
-                                        <button 
-                                            className="bouton bouton_primary" 
-                                            onClick={() => handleDeleteButtonClick(thing._id)}
-                                        >
-                                            Supprimer
-                                        </button>
-                                        <button className="bouton bouton_primary">Voir</button>
+                                        <div className="card_text">
+                                            <p>{thing.title}</p>
+                                            <p className={thing.published ? "status published" : "status draft"}>
+                                                {thing.published ? "Publié" : "Brouillon"}
+                                            </p>
+                                        </div>
+                                        
+                                        <div className="card_buttons">
+                                            <button 
+                                                className="bouton bouton_primary" 
+                                                onClick={() => handleViewArticle(thing._id)}
+                                            >
+                                                Voir
+                                            </button>
+                                            <button 
+                                                className="bouton bouton_primary" 
+                                                onClick={() => handleEditButtonClick(thing)}
+                                            >
+                                                Modifier
+                                            </button>
+                                            <button 
+                                                className="bouton bouton_primary" 
+                                                onClick={() => handleDeleteButtonClick(thing._id)}
+                                            >
+                                                Supprimer
+                                            </button>
+                                        </div>
                                     </div>
                                 ))
                             ) : (

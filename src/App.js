@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import ArticlesByUser from './pages/ArticlesByUser';
+import Article from './pages/Article';
 import Stuff from './pages/Stuff';
 import Image from './pages/Image';
 
@@ -20,7 +21,7 @@ function App() {
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/dashboard/:id" element={<Dashboard/>}/>
                 <Route path="/mes-articles/:id" element={<ArticlesByUser/>}/>
-                <Route path="/stuff/" element={<Stuff />} />
+                <Route path="/article/:id" element={<Article />} />
                 <Route path="/stuff" element={<Stuff/>}/>
                 <Route path="/image" element={<Image/>}/>
             </Routes>

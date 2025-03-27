@@ -134,15 +134,34 @@
                 background-color: $blanc;
                 border-radius : 25px;
                 overflow-y : auto;
-                border : 2px solid red;
 
                 .card{
                     display : flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap : 1vw;
 
                     img{
                         width : 5vw;
                         height : 5vw;
                         object-fit: cover;
+                    }
+
+                    &_text{
+                        display : flex;
+                        flex-grow: 1;
+
+                        p{
+                            width : 100%;
+                            text-align : center;
+                        }
+                    }
+
+                    
+
+                    &_buttons{
+                        display : flex;
+                        gap : 1vw;
                     }
                 }
             }
