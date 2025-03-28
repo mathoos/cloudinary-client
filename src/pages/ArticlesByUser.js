@@ -136,7 +136,7 @@ const ArticlesByUser = () => {
                                             <p className={thing.published ? "status published" : "status draft"}>
                                                 {thing.published ? "Publié" : "Brouillon"}
                                             </p>
-                                            <p>{thing.date}</p>
+                                            <p>{new Date(thing.createdAt).toLocaleDateString()}</p>
                                         </div>
                                         
                                         <div className="card_buttons">

@@ -18,7 +18,7 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
             description: initialData.description || '',
             tag: initialData.tag || '',
             image: initialData.image || null,
-            published: Boolean(initialData.published), // 🔥 Assure que c'est un booléen
+            published: Boolean(initialData.published), 
         }));
     }, [initialData]);
 
