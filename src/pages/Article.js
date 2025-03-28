@@ -31,7 +31,12 @@ const Article = () => {
             <div className="article-content">
                 <h1>{article.title}</h1>
                 <img src={article.imageUrl} alt={article.title} />
-                <p>{article.description}</p>
+                <p>{article.description.split("\n").map((line, index) => (
+                    <span key={index}>
+                        {line}
+                        <br />
+                    </span>
+                ))}</p>
                 <p><strong>Tag :</strong> {article.tag}</p>
                 <p className={article.published ? "status published" : "status draft"}>
                     {article.published ? "Publié" : "Brouillon"}
