@@ -50,6 +50,7 @@ const ArticlesByUser = () => {
         try {
             const updatedData = new FormData();
             updatedData.append("title", formData.title);
+            updatedData.append("subtitle", formData.subtitle);
             updatedData.append("description", formData.description);
             updatedData.append("tag", formData.tag);
             updatedData.append("published", formData.published);
@@ -103,6 +104,7 @@ const ArticlesByUser = () => {
                         modalActive={true}
                         initialData={selectedThing ? {
                             title: selectedThing.title || '',
+                            subtitle: selectedThing.subtitle || '',
                             description: selectedThing.description || '',
                             tag: selectedThing.tag || '',
                             image: selectedThing.imageUrl || '',
@@ -122,6 +124,7 @@ const ArticlesByUser = () => {
                                 </div>
                                 <div className="card_text">
                                     <p className="title">Titre</p>
+                                    <p className="title">Sous-titre</p>
                                     <p className="title">Statut</p>
                                     <p className="title">Date</p>
                                 </div>
@@ -133,6 +136,7 @@ const ArticlesByUser = () => {
                                         <img src={thing.imageUrl} alt={thing.title} />
                                         <div className="card_text">
                                             <p>{thing.title}</p>
+                                            <p>{thing.subtitle}</p>
                                             <p className={thing.published ? "status published" : "status draft"}>
                                                 {thing.published ? "Publié" : "Brouillon"}
                                             </p>

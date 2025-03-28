@@ -5,6 +5,7 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
     
     const [formData, setFormData] = useState({
         title: '',
+        subtitle: '',
         description: '',
         tag: '',
         image: null,
@@ -15,6 +16,7 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
         setFormData(prev => ({
             ...prev,
             title: initialData.title || '',
+            subtitle: initialData.subtitle || '',
             description: initialData.description || '',
             tag: initialData.tag || '',
             image: initialData.image || null,
@@ -67,6 +69,10 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
                     <fieldset>
                         <label htmlFor="title">Titre</label>
                         <input type="text" id="title" name="title" value={formData.title} onChange={handleInputChange} required />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="subtitle">Sous-titre</label>
+                        <textarea id="subtitle" name="subtitle" value={formData.subtitle} onChange={handleInputChange} required></textarea>
                     </fieldset>
                     <fieldset>
                         <label htmlFor="description">Description</label>

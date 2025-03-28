@@ -31,6 +31,7 @@ const Article = () => {
             <div className="article-content">
                 <h1>{article.title}</h1>
                 <img src={article.imageUrl} alt={article.title} />
+                <p>{article.subtitle}</p>
                 <p>{article.description.split("\n").map((line, index) => (
                     <span key={index}>
                         {line}

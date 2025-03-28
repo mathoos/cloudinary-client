@@ -131,12 +131,13 @@ export const updateUserInfo = async (token, formData) => {
 };
 
 
-export const createObject = async (title, description, tag, image, published, token) => {
+export const createObject = async (title, subtitle, description, tag, image, published, token) => {
 
     try {
         const formData = new FormData();
 
         formData.append("title", title);
+        formData.append("subtitle", subtitle);
         formData.append("description", description);
         formData.append("tag", tag);
         formData.append("published", published);

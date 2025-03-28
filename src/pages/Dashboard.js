@@ -36,7 +36,7 @@ const Dashboard = () => {
 
     const handleCreateObjectFormSubmit = async (event, formData) => {
         try {
-            await createObject(formData.title, formData.description, formData.tag, formData.image, formData.published, token);
+            await createObject(formData.title, formData.subtitle, formData.description, formData.tag, formData.image, formData.published, token);
             event.target.reset(); // Reset du formulaire
             fetchData(); // Rafraîchir les données
             setShowForm(false);
@@ -177,7 +177,7 @@ const Dashboard = () => {
                     handleSubmit={handleCreateObjectFormSubmit}
                     handleClose={handleCloseForm} 
                     modalActive={true}
-                    initialData={{ title: '', description: '', tag: '' }}
+                    initialData={{ title: '', subtitle: '', description: '', tag: '' }}
                 />
             ) : (
                 <div className="dashboard_container-content">
@@ -200,6 +200,7 @@ const Dashboard = () => {
                                                 <div key={thing._id} className="card">
                                                     <img src={thing.imageUrl} alt={thing.title} />
                                                     <h4>{thing.title}</h4>
+                                                    <p>{thing.subtitle}</p>
                                                     <p>{new Date(thing.createdAt).toLocaleDateString()}</p>
                                                 </div>
                                             ))
