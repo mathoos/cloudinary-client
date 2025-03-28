@@ -199,8 +199,8 @@ const Dashboard = () => {
                                             bloc.content.map(thing => (
                                                 <div key={thing._id} className="card">
                                                     <img src={thing.imageUrl} alt={thing.title} />
-                                                    <h3>{thing.title}</h3>
-                                                    <p>Créé le : {new Date(thing.createdAt).toLocaleDateString()}</p>
+                                                    <h4>{thing.title}</h4>
+                                                    <p>{new Date(thing.createdAt).toLocaleDateString()}</p>
                                                 </div>
                                             ))
                                         ) : (

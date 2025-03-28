@@ -44,10 +44,9 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
     const onSubmit = (e) => {
         e.preventDefault();
     
-        // Assurer que published est bien un booléen
         const finalFormData = {
             ...formData,
-            published: Boolean(formData.published), // 🔥 Convertit en booléen pour éviter les erreurs
+            published: Boolean(formData.published), 
         };
     
         handleSubmit(e, finalFormData);
@@ -95,11 +94,11 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
                             type="checkbox" 
                             id="published" 
                             name="published" 
-                            checked={!!formData.published}  // 🔥 Assure que `false` est bien pris en compte
+                            checked={!!formData.published} 
                             onChange={handleInputChange} 
                         />
                     </fieldset>
-                    <button className="bouton bouton_noir" type="submit">Valider</button>
+                    <button className="bouton bouton_primary" type="submit">Valider</button>
                 </div>
                 
             </form>

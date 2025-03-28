@@ -113,12 +113,22 @@
 
                         .card{
                             display : flex;
+                            align-items: center;
+                            //justify-content: space-between;
                             gap : 1vw;
 
                             img{
                                 width : 2vw;
                                 height : 2vw;
                                 object-fit: cover;
+                            }
+
+                            h4{
+                                //width : 100%;
+                            }
+
+                            p{
+                                //width : 100%;
                             }
                         }
                     }

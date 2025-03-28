@@ -122,7 +122,7 @@ const ArticlesByUser = () => {
                                 </div>
                                 <div className="card_text">
                                     <p className="title">Titre</p>
-                                    <p className="title">Description</p>
+                                    <p className="title">Statut</p>
                                     <p className="title">Date</p>
                                 </div>
                               
