@@ -200,7 +200,6 @@ const Dashboard = () => {
                                                 <div key={thing._id} className="card">
                                                     <img src={thing.imageUrl} alt={thing.title} />
                                                     <h4>{thing.title}</h4>
-                                                    <p>{thing.subtitle}</p>
                                                     <p>{new Date(thing.createdAt).toLocaleDateString()}</p>
                                                 </div>
                                             ))

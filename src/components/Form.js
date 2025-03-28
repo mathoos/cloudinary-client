@@ -95,14 +95,17 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
                         <input type="file" id="file" name="image" onChange={handleImageChange} />
                     </fieldset>
                     <fieldset>
-                        <label htmlFor="published">Publier l'objet</label>
-                        <input 
-                            type="checkbox" 
-                            id="published" 
-                            name="published" 
-                            checked={!!formData.published} 
-                            onChange={handleInputChange} 
-                        />
+                        <label htmlFor="published">Publier l'article en ligne</label>
+                        <div className="toggle-switch">
+                            <input 
+                                type="checkbox" 
+                                id="published" 
+                                name="published" 
+                                checked={formData.published} 
+                                onChange={handleInputChange} 
+                            />
+                            <label className="toggle-slider" htmlFor="published"></label>
+                        </div>
                     </fieldset>
                     <button className="bouton bouton_primary" type="submit">Valider</button>
                 </div>
