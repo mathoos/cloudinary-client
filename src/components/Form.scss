@@ -109,10 +109,16 @@
             }
 
             textarea{
-                min-height : 20vh;
+                
                 resize: none;
                 padding : 10px 15px;
                 border-radius : 15px !important;
+
+                &#description{
+                    min-height : 40vh;
+                }
+
+                
             }
 
             input[type=file]{
