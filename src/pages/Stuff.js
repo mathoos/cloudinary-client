@@ -37,7 +37,7 @@ const Stuff = () => {
                 <h2>Toutes les articles</h2>
                 <div className="stuff_container-content">
                     {publishedArticles.map(thing => (
-                        <Link to="/" key={thing._id} className="card">
+                        <Link to={`/article/${thing._id}`} key={thing._id} className="card">
                             <img src={thing.imageUrl} alt={thing.title} />
                             <h3>{thing.title}</h3> 
                             <div className="card_subtitle">

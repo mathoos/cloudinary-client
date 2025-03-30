@@ -1,0 +1,54 @@
+@import "../style.scss";
+
+.article{
+    width : 100%;
+    min-height : 100vh;
+    background: linear-gradient(349deg, rgba(189,193,255,1) 0%, rgba(231,209,247,1) 62%, orange 100%);
+	background-size : 200% 200%;
+    animation : gradient 15s infinite;
+    padding : 3.125vw;
+
+    &_container{
+        display : flex;
+        flex-direction: column;
+        gap : 6.25vw;
+        padding : 6.25vw;
+        background-color: $blanc;
+        border-radius : 25px;
+        width : 100%;
+        height : 100%;
+
+        &-title{
+            display : flex;
+            flex-direction: column;
+        }
+
+        &-content {
+            display : flex;
+            gap: 3.125vw;
+        
+            &--img {
+                width: 30vw;
+                min-width : 30vw;
+                height : 30vw;
+                //max-height : 40vw;
+        
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius : 15px;
+                    
+                }
+            }
+        
+            &--txt {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap : 3.125vw;
+                width: 100%;
+            }
+        } 
+    }
+}
