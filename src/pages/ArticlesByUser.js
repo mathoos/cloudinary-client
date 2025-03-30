@@ -137,7 +137,7 @@ const ArticlesByUser = () => {
                                         <div className="card_text">
                                             <p>{thing.title}</p>
                                             <p>{thing.subtitle}</p>
-                                            <p className={thing.published ? "status published" : "status draft"}>
+                                            <p>
                                                 {thing.published ? "Publié" : "Brouillon"}
                                             </p>
                                             <p>{new Date(thing.createdAt).toLocaleDateString()}</p>

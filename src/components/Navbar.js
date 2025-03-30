@@ -5,7 +5,7 @@ import { clearToken } from "../utilities/Slice";
 import { useNavigate } from "react-router-dom";
 import './Navbar.scss';
 
-const Navbar = ({ isUserPage , isHomePage }) => {
+const Navbar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
