@@ -120,13 +120,13 @@ const ArticlesByUser = () => {
                         <div className="dashboard_container-content--stuff">
                             <div className="card">
                                 <div className="card_image">
-                                    <p className="title">Image</p>
+                                    <p className="card_text-title">Image</p>
                                 </div>
                                 <div className="card_text">
-                                    <p className="title">Titre</p>
-                                    <p className="title">Sous-titre</p>
-                                    <p className="title">Statut</p>
-                                    <p className="title">Date</p>
+                                    <p className="card_text-title">Titre</p>
+                                    <p className="card_text-title">Sous-titre</p>
+                                    <p className="card_text-title">Statut</p>
+                                    <p className="card_text-title">Date</p>
                                 </div>
                               
                             </div>
@@ -135,12 +135,12 @@ const ArticlesByUser = () => {
                                     <div key={thing._id} className="card">
                                         <img src={thing.imageUrl} alt={thing.title} />
                                         <div className="card_text">
-                                            <p>{thing.title}</p>
-                                            <p>{thing.subtitle}</p>
-                                            <p>
+                                            <p className="card_text-content">{thing.title}</p>
+                                            <p className="card_text-content subtitle">{thing.subtitle}</p>
+                                            <p className="card_text-content">
                                                 {thing.published ? "Publié" : "Brouillon"}
                                             </p>
-                                            <p>{new Date(thing.createdAt).toLocaleDateString()}</p>
+                                            <p className="card_text-content">{new Date(thing.createdAt).toLocaleDateString()}</p>
                                         </div>
                                         
                                         <div className="card_buttons">

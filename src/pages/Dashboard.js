@@ -135,12 +135,12 @@ const Dashboard = () => {
             content: null
         },
         { 
-            title: "Articles à la une.", 
+            title: "Articles à la une", 
             subtitle: "Liste des 3 articles que vous avez définis à la une.", 
             content: null 
         },
         { 
-            title: "Tous mes articles.", 
+            title: "Tous mes articles", 
             subtitle: "Total de tous les articles, publiés et brouillons confondus.", 
             content: things,
             link: { 

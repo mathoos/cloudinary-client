@@ -153,11 +153,6 @@
 
                     &_image{
                         width : 5vw;
-
-                        p{
-                            font-weight : bold;
-                            text-align : center;
-                        }
                     }
 
                     img{
@@ -168,17 +163,28 @@
 
                     &_text{
                         display : flex;
+                        align-items: center;
                         gap : 1vw;
-                        flex-grow: 1;
+                        flex-grow: 1; 
 
-                        p{
+                        &-title{
+                            width : 100%;
+                            font-weight : bold;
+                            text-align : center;
+                        }
+
+                        &-content{
                             width : 100%;
                             text-align : center;
 
-                            &.title{
-                                font-weight : bold;
+                            &.subtitle{
+                                display: -webkit-box;
+                                -webkit-line-clamp: 3;
+                                -webkit-box-orient: vertical;
+                                overflow  : hidden;
+                                text-align : left;
                             }
-                        }
+                        } 
                     }
 
                     &_buttons{
