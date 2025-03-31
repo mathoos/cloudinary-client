@@ -88,29 +88,31 @@ function FormUser({ title, handleSubmit, handleClose, initialData }) {
                     />
                 </fieldset>
                 <fieldset>
-                    <legend>Je suis</legend>
-                    <label className="radio-label">
-                        <input 
-                            type="radio" 
-                            name="genre" 
-                            value="homme" 
-                            checked={formData.genre === "homme"}
-                            onChange={handleInputChange} 
-                        />
-                        <span className="checkmark"></span>
-                        Un homme
-                    </label>
-                    <label className="radio-label">
-                        <input 
-                            type="radio" 
-                            name="genre" 
-                            value="femme" 
-                            checked={formData.genre === "femme"}
-                            onChange={handleInputChange} 
-                        />
-                        <span className="checkmark"></span>
-                        Une femme
-                    </label>
+                    <div className="row">
+                        <legend>Je suis</legend>
+                        <label className="radio-label">
+                            <input 
+                                type="radio" 
+                                name="genre" 
+                                value="homme" 
+                                checked={formData.genre === "homme"}
+                                onChange={handleInputChange} 
+                            />
+                            <span className="checkmark"></span>
+                            Un homme
+                        </label>
+                        <label className="radio-label">
+                            <input 
+                                type="radio" 
+                                name="genre" 
+                                value="femme" 
+                                checked={formData.genre === "femme"}
+                                onChange={handleInputChange} 
+                            />
+                            <span className="checkmark"></span>
+                            Une femme
+                        </label>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <label htmlFor="profileImage">Image actuelle :</label>

@@ -142,7 +142,6 @@
                 }
             }
 
-
             &--stuff{
                 display : flex;
                 flex-direction: column;
@@ -151,6 +150,7 @@
                 background-color: $blanc;
                 border-radius : 25px;
                 overflow-y : auto;
+                height : 100%;
 
                 .card{
                     display : grid;

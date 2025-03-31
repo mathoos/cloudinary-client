@@ -177,6 +177,64 @@
                     left: 25px;
                 }
             }
+
+            .radio-label{
+                position: relative;
+                display: flex;
+                align-items: center;              
+                padding-left: 30px;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                min-height : 22px;
+
+                .checkmark {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display : flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 22px;
+                    width: 22px;
+                    border : 2px solid $primary;
+                    background-color: $blanc;
+                    border-radius: 100vmax;
+
+                    &::after{
+                        position : absolute;
+                        content : '';
+                        display : none;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 100vmax;
+                        background: $primary;
+                    }
+                }
+
+                input{
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+
+                    &:checked{
+                        ~ .checkmark{
+                            &::after{
+                                display: flex;
+                            }    
+                        } 
+                    }
+                }    
+            }
+        }
+
+        .row{
+            display : flex;
+            align-items: center;
+            gap : 2.5vw;
+            width : 100%;
         }
     }
 }

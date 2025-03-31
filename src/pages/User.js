@@ -68,18 +68,10 @@ const User = () => {
     }, [token, id, navigate, fetchUserInfo]);
 
 
-
-
-    
-    
-    
-
     return (
         <div className="dashboard">
             <div className="dashboard_container">
                 <Navbar />
-                <button onClick={() => handleEditButtonClick()}>Modifier mes info</button>
-
                 {showForm ? (
                     <FormUser
                         title="Modifier mes informations"
@@ -97,16 +89,22 @@ const User = () => {
                 ) : (
                     <div className="dashboard_container-content">
 
-                    <div className="dashboard_container-content--user">
-                        <h2>Bonjour {userInfo.prenom} !</h2>
-                        {userInfo.profileImageUrl && (
-                            <div className="user-img">
-                                <img src={userInfo.profileImageUrl} alt="Profile" />
-                            </div>
-                        )}
-                    </div>
+                        <div className="dashboard_container-content--user">
+                            <h2>Bonjour {userInfo.prenom} !</h2>
+                            {userInfo.profileImageUrl && (
+                                <div className="user-img">
+                                    <img src={userInfo.profileImageUrl} alt="Profile" />
+                                </div>
+                            )}
+                        </div>
+                        <div className="dashboard_container-content--stuff">
+                            <button 
+                                className="bouton bouton_gris-dark" 
+                                onClick={() => handleEditButtonClick()}>Modifier mes informations
+                            </button>
+                        </div>
 
-                </div> 
+                    </div> 
                 )}
             </div>
         </div>
