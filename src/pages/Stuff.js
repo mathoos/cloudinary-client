@@ -43,7 +43,7 @@ const Stuff = () => {
                             <div className="card_subtitle">
                                 <p>{thing.subtitle}</p>
                             </div>
-                            <p>{new Date(thing.createdAt).toLocaleDateString()}</p>
+                            <p className="card_date">{new Date(thing.createdAt).toLocaleDateString()}</p>
                         </Link>
                     ))}
                 </div>

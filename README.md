@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Système de gestion de contenu - CRUD
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Système de gestion de contenu qui permet à l'utilisateur connecté d'ajouter des articles sur son site. 
 
-## Available Scripts
+## Utilisation
 
-In the project directory, you can run:
+### Créer un utilisateur
 
-### `npm start`
+1. Cliquer sur le bouton **Login**. 
+2. Cliquer sur le bouton **Nouveau sur la plateforme? Inscris toi !** qui se situe en dessous de l'image d'accueil.
+3. Saisir les informations de l'uutilisateur et cliquer sur le bouton **S'inscrire**. 
+4. Si l'inscription a réussi, l'utilisateur est redirigé sur la page **/login**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Se connecter au dashboard utilisateur
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Dashboard qui regroupe le nombre d'articles publiés, le nombre de brouillon enregistrés, et un aperçu de tous les articles créés par l'utilisateur. 
 
-### `npm test`
+1. Sur la page d'accueil, cliquer sur le bouton **Login**.
+2. Insérer les identifiants et cliquer sur **Connexion**.  
+    Email : test@test.fr  
+    Mot de passe : test2805
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Créer un article
 
-### `npm run build`
+1. Cliquer sur le bouton **Ajouter un article** qui se situe en bas à droite. 
+2. Remplir les différents champs (titre, sous-titre, description, tag, image et statut). 
+3. Spécifier si l'article doit être publié ou bien enregistré en tant que brouillon. 
+4. Confirmation la création de l'article en cliquant sur le bouton **Valider**.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Le formulaire se ferme et l'article créé s'affiche dans le bloc **Tous mes articles**.  En fonction du statut sélectionné, l'article sera incrémenté dans le bloc **Articles publiés** ou bien **Brouillons enregistrés**.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Voir tous les articles 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Page qui affiche tous les articles créés par l'utilisateur dans une liste qui contient l'image, le titre, le sous-titre, le statut de l'article et la date à laquelle il a été créé.
 
-### `npm run eject`
+1. Cliquer sur le bouton **Voir** dans le bloc **Tous mes articles**.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Voir un article
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Page affiche l'article dans son intégralité et sa structure finale visible par les visiteurs.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Cliquer sur le bouton **Voir**. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Modifier un article
 
-## Learn More
+1. Cliquer sur le bouton **Modifier**. Un formulaire apparaît avec les données pré-remplies. Il suffit de modifier les entrées souhaitées.
+2. Pour confirmer la modification de l'article, cliquer sur **Valider**.
+3. L'article est mis à jour.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Supprimer un article
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Cliquer sur le bouton **Supprimer**.
+2. Confirmer ou annuler la suppression de l'article.
+3. La liste des articles est mise à jour.
 
-### Code Splitting
+### Aller sur la page utilisateur
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Page qui affiche les informations de l'utilisateur (Nom, prénom, genre et photo de profil). 
 
-### Analyzing the Bundle Size
+### Modifier les informations utilisateur 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Cliquer sur le bouton **Modifier mes informations**. Un formulaire apparaît avec les données pré-remplies. Il suffit de modifier les entrées souhaitées.
+2. Pour confirmer la modification des informations, cliquer sur **Valider**.
+3. Les informations de l'utilisateur sont mises à jour.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Node.js (version >=16.0.0)
+- npm ou yarn
+- MongoDB : Créer un compte MongoDB.
 
-### Deployment
+    npm install  
+    npm start 
+    npm test
+    npm run build   
+    npm run eject 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

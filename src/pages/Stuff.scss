@@ -51,6 +51,11 @@
                     overflow  : hidden;
                     padding-bottom : 2.5px;
                 }
+
+                &_date{
+                    font-size : 1vw;
+                    color : $secondary;
+                }
             }
         }
     }
