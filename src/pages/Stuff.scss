@@ -3,7 +3,7 @@
 .stuff{
     width : 100%;
     min-height : 100vh;
-    background: linear-gradient(349deg, rgba(189,193,255,1) 0%, rgba(231,209,247,1) 62%, orange 100%);
+    background: $linear;
 	background-size : 200% 200%;
     animation : gradient 15s infinite;
     padding : 3.125vw;

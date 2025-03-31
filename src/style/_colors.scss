@@ -4,6 +4,8 @@ $blanc : #FFFFFF;
 $noir : #3D3741;
 $gris : #F5F5F5;
 $gris-dark : #565457;
+$orange : #FCB454;
+$linear : linear-gradient(300deg, $secondary 0%, $primary 62%, $orange 100%);
 
 $primaryOpac: rgba($primary, .15);
 $secondaryOpac: rgba($secondary, .5);

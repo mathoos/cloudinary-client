@@ -15,13 +15,23 @@
     z-index : 1;
 
     &_primary{
-        background-color: $primary;
-        color : $gris-dark;
+        background-color: $orange;
+        color : $blanc;
     }
 
     &_gris{
         background-color: $gris;
         color : $gris-dark;
+    }
+
+    &_gris-dark{
+        background-color: $gris-dark;
+        color : $blanc;
+    }
+
+    &_linear{
+        background : $linear;
+        color : $blanc;
     }
 
     &_petit{

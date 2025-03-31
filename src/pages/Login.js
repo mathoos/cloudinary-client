@@ -86,7 +86,7 @@ function Login() {
 
                 </div>
            
-                <button className="bouton bouton_primary" type="submit">Connexion</button>
+                <button className="bouton bouton_gris-dark" type="submit">Connexion</button>
            
             </form>
         </PageLayout>

@@ -7,7 +7,7 @@ const Bloc = ({ title, subtitle, data, buttons, link, children }) => {
                 <div className="bloc_title-up">
                     <h3>{title}</h3>
                     {link && (
-                        <Link to={link.url} className="bouton bouton_primary bouton_petit">
+                        <Link to={link.url} className="bouton bouton_gris-dark bouton_petit">
                             {link.text}
                         </Link>
                     )}

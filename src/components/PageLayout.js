@@ -15,7 +15,7 @@ function PageLayout({ title, description, buttonText, buttonLink, secondButtonTe
                         <div className="buttons-container"> 
                             {buttonText && buttonLink && (
                                 <Link to={buttonLink}>
-                                    <button className="bouton bouton_primary">{buttonText}</button>
+                                    <button className="bouton bouton_gris-dark">{buttonText}</button>
                                 </Link>
                             )}
                             {secondButtonText && secondButtonLink && (

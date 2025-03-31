@@ -145,13 +145,13 @@ const ArticlesByUser = () => {
                                         
                                         <div className="card_buttons">
                                             <button 
-                                                className="bouton bouton_primary bouton_petit" 
+                                                className="bouton bouton_gris bouton_petit" 
                                                 onClick={() => handleViewArticle(thing._id)}
                                             >
                                                 Voir
                                             </button>
                                             <button 
-                                                className="bouton bouton_primary bouton_petit" 
+                                                className="bouton bouton_gris bouton_petit" 
                                                 onClick={() => handleEditButtonClick(thing)}
                                             >
                                                 Modifier
