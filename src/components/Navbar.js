@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearToken } from "../utilities/Slice";
-import { useNavigate } from "react-router-dom";
 import './Navbar.scss';
 
 const Navbar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { id } = useParams(); 
 
     const handleLogout = async () => {
         try {
@@ -26,10 +26,11 @@ const Navbar = () => {
         <nav className="nav">
 
             <div className="nav_links">
-                <Link to="/" className="nav_links-link">Home</Link>
-                <Link to="/" className="nav_links-link">Créer un article</Link>
-                <Link to="/" className="nav_links-link">Settings</Link>           
-                <button className="nav_links-link" onClick={handleLogout}>Déconnexion</button>
+                <div className="nav_links-content">
+                    <Link to="/" className="nav_links-content--link">Home</Link>
+                    <Link to={`/user/${id}`} className="nav_links-content--link">Settings</Link>  
+                </div>        
+                <button className="bouton bouton_gris-dark nav_links-link" onClick={handleLogout}>Déconnexion</button>
             </div>
             
         </nav>     
