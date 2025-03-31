@@ -26,8 +26,11 @@
                 flex-direction: column;
                 gap : 1vw;
                 padding : 1.125vw;
-                border : 1px solid $gris-dark;
+                //border : 1px solid $gris-dark;
                 background-color: $blanc;
+                -webkit-box-shadow: 10px 10px 15px -5px $gris-dark;
+                -moz-box-shadow: 10px 10px 15px -5px $gris-dark;
+                box-shadow: 10px 10px 15px -5px $gris-dark;
                 border-radius : 15px;
 
                 img{
@@ -42,12 +45,11 @@
                 }
              
                 &_subtitle{
-                    // display: -webkit-box;
-                    // -webkit-line-clamp: 3;
-                    // -webkit-box-orient: vertical;
-                    // overflow  : hidden;
-                    // padding-bottom : 2.5px;
-                    flex-grow : 1;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow  : hidden;
+                    padding-bottom : 2.5px;
                 }
             }
         }
