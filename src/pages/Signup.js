@@ -1,7 +1,6 @@
 import PageLayout from "../components/PageLayout";
 import HomepageBackground from "../img/homepage.gif";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { signupUser } from "../utilities/Server";
 
@@ -175,19 +174,18 @@ function Signup() {
                     </fieldset>
 
                     <fieldset>
-                        
-                            <input 
-                                type="file" 
-                                id="profileImage" 
-                                name="profileImage" 
-                                onChange={(e) => setProfileImage(e.target.files[0])} 
-                                placeholder="coucou"
-                            />
-                            {(profileImageError || message) && ( 
-                                <p className="error-message">
-                                    {profileImageError || message}
-                                </p>
-                            )}
+                        <input 
+                            type="file" 
+                            id="profileImage" 
+                            name="profileImage" 
+                            onChange={(e) => setProfileImage(e.target.files[0])} 
+                            placeholder="coucou"
+                        />
+                        {(profileImageError || message) && ( 
+                            <p className="error-message">
+                                {profileImageError || message}
+                            </p>
+                        )}
                     
                     </fieldset>
                 </div>

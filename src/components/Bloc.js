@@ -22,7 +22,7 @@ const Bloc = ({ title, subtitle, data, buttons, link, children }) => {
             {buttons && buttons.length > 0 && (
                 <div className="bloc_buttons">
                     {buttons.map((button, index) => (
-                        <button key={index} onClick={button.onClick} className="bouton">
+                        <button key={index} onClick={button.onClick} className="bouton bouton_gris-dark bouton_grand">
                             {button.text}
                         </button>
                     ))}

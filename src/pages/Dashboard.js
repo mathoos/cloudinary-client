@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { createObject , getObjectsByUser , getUserInfo , updateUserInfo } from "../utilities/Server"; 
+import { useNavigate, useParams, Link } from "react-router-dom";
+import { createObject , getObjectsByUser , getUserInfo } from "../utilities/Server"; 
 
 import Bloc from "../components/Bloc"
 import Form from '../components/Form';
@@ -20,7 +20,6 @@ const Dashboard = () => {
 
  
     const [userInfo, setUserInfo] = useState({ nom: "", prenom: "", profileImageUrl: "", profileImage: null });
-    const [isEditing, setIsEditing] = useState(false);
     const [showForm, setShowForm] = useState(false);
 
     
@@ -47,47 +46,7 @@ const Dashboard = () => {
     };
 
 
-    const handleEditButtonClick = () => {
-        setIsEditing(true); 
-    };
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData();
-        formData.append("nom", userInfo.nom);
-        formData.append("prenom", userInfo.prenom);
-        formData.append("genre", userInfo.genre);
-
-        // Vérification de l'image avant l'envoi
-        if (userInfo.profileImage) {
-            console.log("Image ajoutée :", userInfo.profileImage); // Debugging
-            formData.append("image", userInfo.profileImage);
-        } else {
-            console.log("Aucune image ajoutée."); // Debugging
-        }
-
-        try {
-            await updateUserInfo(token, formData);
-            
-            // Après la mise à jour, rafraîchissez les informations de l'utilisateur
-            await fetchUserInfo();  // Récupérer les nouvelles informations
-            setIsEditing(false);
-        } catch (error) {
-            console.error("Erreur lors de la mise à jour des informations :", error);
-        }
-    };
-    
-    // Gestion de l'upload de l'image
-    const handleImageChange = (event) => {
-        const file = event.target.files[0]; // Récupérer le fichier sélectionné
-        setUserInfo({ ...userInfo, profileImage: file }); // Mettre à jour l'état avec le fichier
-    };
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setUserInfo({ ...userInfo, [name]: value });
-    };
 
    // Déclarez `fetchData` et `fetchUserInfo` avec `useCallback`
     const fetchData = useCallback(async () => {
@@ -149,15 +108,11 @@ const Dashboard = () => {
             }
         },
         { 
-            title: "Créer un article", 
-            subtitle: "Formulaire pour ajouter un article", 
+            title: "", 
+            subtitle: "", 
             buttons: [
                 {
-                    text: "Modifier mes informations",
-                    onClick: handleEditButtonClick
-                },
-                {
-                    text: "Ajouter",
+                    text: "Ajouter un article",
                     onClick: handleAddButtonClick
                 }
             ],
@@ -181,14 +136,14 @@ const Dashboard = () => {
                 />
             ) : (
                 <div className="dashboard_container-content">
-                    <div className="dashboard_container-content--user">
+                    <Link to={`/user/${id}`} className="dashboard_container-content--user">
                         <h2>Bonjour {userInfo.prenom} !</h2>
                         {userInfo.profileImageUrl && (
                             <div className="user-img">
                                 <img src={userInfo.profileImageUrl} alt="Profile" />
                             </div>
                         )}
-                    </div>
+                    </Link>
 
                     <div className="dashboard_container-content--blocs">
                         {blocData.map((bloc, index) => (
@@ -213,102 +168,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             )}
-
-
-
-
-
-
-                {/* <div className="dashboard_container-content">
-
-                    <div className="dashboard_container-content--user">
-                        <h2>Bonjour {userInfo.prenom} !</h2>
-                        {userInfo.profileImageUrl && (
-                            <div className="user-img">
-                                <img src={userInfo.profileImageUrl} alt="Profile" />
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="dashboard_container-content--blocs">
-                        {blocData.map((bloc, index) => (
-                            <Bloc key={index} title={bloc.title} subtitle={bloc.subtitle} data={bloc.data} buttons={bloc.buttons}>
-                                
-
-                                {bloc.content ? (
-                                    <div className="bloc_container">
-                                        {bloc.content.length > 0 ? (
-                                            bloc.content.map(thing => (
-                                                <div key={thing._id} className="card" onClick={() => handleCardClick(thing._id)}>
-                                                    <img src={thing.imageUrl} alt={thing.title} />
-                                                    <h3>{thing.title}</h3>
-                                                </div>
-                                            ))
-                                        ) : (
-                                            <p>Vous n'avez créé aucun objet.</p>
-                                        )}
-                                    </div>
-                                ) : null}
-                            </Bloc>
-                        ))}
-                    </div>
-                
-
-
-                    {isEditing && (
-                        <form onSubmit={handleFormSubmit}>
-                            <div>
-                                <label htmlFor="nom">Nom</label>
-                                <input
-                                    type="text"
-                                    id="nom"
-                                    name="nom"
-                                    value={userInfo.nom}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="prenom">Prénom</label>
-                                <input
-                                    type="text"
-                                    id="prenom"
-                                    name="prenom"
-                                    value={userInfo.prenom}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="genre">Genre</label>
-                                <select
-                                    id="genre"
-                                    name="genre"
-                                    value={userInfo.genre}
-                                    onChange={handleInputChange}
-                                    required
-                                >
-                                    <option value="">Choisir un genre</option>
-                                    <option value="Homme">Homme</option>
-                                    <option value="Femme">Femme</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label htmlFor="profileImage">Image de Profil</label>
-                                <input
-                                    type="file"
-                                    id="profileImage"
-                                    name="profileImage"
-                                    onChange={handleImageChange}
-                                />
-                            </div>
-                            <button type="submit">Enregistrer</button>
-                        </form>
-                    )} 
-                </div> */}
-                
             </div>
-
         </div>
     );
 }

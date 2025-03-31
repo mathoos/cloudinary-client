@@ -55,63 +55,61 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
     };
 
     return (
-
-            <form className="form" onSubmit={onSubmit}>
-                <div className="form_title">
-                    <h2>{title}</h2>
-                    <button className="form_title-close" onClick={handleCloseButtonClick}>
-                        <div className="form_title-close-barre form_title-close-barre--1"></div>
-                        <div className="form_title-close-barre form_title-close-barre--2"></div>
-                    </button>
-                </div>
-                
-                <div className="form-fieldset">
-                    <fieldset>
-                        <label htmlFor="title">Titre</label>
-                        <input type="text" id="title" name="title" value={formData.title} onChange={handleInputChange} required />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="subtitle">Sous-titre</label>
-                        <textarea id="subtitle" name="subtitle" value={formData.subtitle} onChange={handleInputChange} required></textarea>
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="description">Description</label>
-                        <textarea id="description" name="description" value={formData.description} onChange={handleInputChange} required></textarea>
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="tag">Tag</label>
-                        <select name="tag" id="tag" value={formData.tag} onChange={handleInputChange} required>
-                            <option value="salle de bain">Salle de bain</option>
-                            <option value="salle de douche">Salle de douche</option>
-                            <option value="cuisine">Cuisine</option>
-                            <option value="amenagement pmr">Aménagement PMR</option>
-                            <option value="mobilier">Mobilier</option>
-                            <option value="toilette">Toilette</option>
-                        </select>
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="file">Image actuelle :</label>
-                        {initialData.image && <img src={initialData.image} alt="Objet" style={{ width: '100px', height: 'auto' }} />}
-                        <input type="file" id="file" name="image" onChange={handleImageChange} />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="published">Publier l'article en ligne</label>
-                        <div className="toggle-switch">
-                            <input 
-                                type="checkbox" 
-                                id="published" 
-                                name="published" 
-                                checked={formData.published} 
-                                onChange={handleInputChange} 
-                            />
-                            <label className="toggle-slider" htmlFor="published"></label>
-                        </div>
-                    </fieldset>
-                    <button className="bouton bouton_primary" type="submit">Valider</button>
-                </div>
-                
-            </form>
-
+        <form className="form" onSubmit={onSubmit}>
+            <div className="form_title">
+                <h2>{title}</h2>
+                <button className="form_title-close" onClick={handleCloseButtonClick}>
+                    <div className="form_title-close-barre form_title-close-barre--1"></div>
+                    <div className="form_title-close-barre form_title-close-barre--2"></div>
+                </button>
+            </div>
+            
+            <div className="form-fieldset">
+                <fieldset>
+                    <label htmlFor="title">Titre</label>
+                    <input type="text" id="title" name="title" value={formData.title} onChange={handleInputChange} required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="subtitle">Sous-titre</label>
+                    <textarea id="subtitle" name="subtitle" value={formData.subtitle} onChange={handleInputChange} required></textarea>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="description">Description</label>
+                    <textarea id="description" name="description" value={formData.description} onChange={handleInputChange} required></textarea>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="tag">Tag</label>
+                    <select name="tag" id="tag" value={formData.tag} onChange={handleInputChange} required>
+                        <option value="salle de bain">Salle de bain</option>
+                        <option value="salle de douche">Salle de douche</option>
+                        <option value="cuisine">Cuisine</option>
+                        <option value="amenagement pmr">Aménagement PMR</option>
+                        <option value="mobilier">Mobilier</option>
+                        <option value="toilette">Toilette</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="file">Image actuelle :</label>
+                    {initialData.image && <img src={initialData.image} alt="Objet" style={{ width: '100px', height: 'auto' }} />}
+                    <input type="file" id="file" name="image" onChange={handleImageChange} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="published">Publier l'article en ligne</label>
+                    <div className="toggle-switch">
+                        <input 
+                            type="checkbox" 
+                            id="published" 
+                            name="published" 
+                            checked={formData.published} 
+                            onChange={handleInputChange} 
+                        />
+                        <label className="toggle-slider" htmlFor="published"></label>
+                    </div>
+                </fieldset>
+                <button className="bouton bouton_primary" type="submit">Valider</button>
+            </div>
+            
+        </form>
     );
 };
 
