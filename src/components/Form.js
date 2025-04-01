@@ -80,12 +80,12 @@ const Form = ({ title, handleSubmit, handleClose, initialData }) => {
                 <fieldset>
                     <label htmlFor="tag">Tag</label>
                     <select name="tag" id="tag" value={formData.tag} onChange={handleInputChange} required>
-                        <option value="salle de bain">Salle de bain</option>
-                        <option value="salle de douche">Salle de douche</option>
-                        <option value="cuisine">Cuisine</option>
-                        <option value="amenagement pmr">Aménagement PMR</option>
-                        <option value="mobilier">Mobilier</option>
-                        <option value="toilette">Toilette</option>
+                        <option value="dev">Dev</option>
+                        <option value="sport">Sport</option>
+                        <option value="lifestyle">Lifestyle</option>
+                        <option value="music">Music</option>
+                        <option value="food">Food</option>
+                        <option value="creation">Création</option>
                     </select>
                 </fieldset>
                 <fieldset>
