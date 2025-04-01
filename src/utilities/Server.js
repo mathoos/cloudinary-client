@@ -1,6 +1,6 @@
 // // Prod
-// const API_BASE_AUTH = "https://cloudinary-serveur.onrender.com/api/auth";
-// const API_BASE_OBJECT = "https://cloudinary-serveur.onrender.com/api/object";
+// const API_BASE_AUTH = "https://the-drop-server.onrender.com/api/auth";
+// const API_BASE_OBJECT = "https://the-drop-server.onrender.com/api/object";
 
 //Local
 const API_BASE_AUTH = "http://localhost:3000/api/auth";
