@@ -1,10 +1,10 @@
 // // Prod
-// const API_BASE_AUTH = "https://the-drop-server.onrender.com/api/auth";
-// const API_BASE_OBJECT = "https://the-drop-server.onrender.com/api/object";
+const API_BASE_AUTH = "https://the-drop-server.onrender.com/api/auth";
+const API_BASE_OBJECT = "https://the-drop-server.onrender.com/api/object";
 
 //Local
-const API_BASE_AUTH = "http://localhost:3000/api/auth";
-const API_BASE_OBJECT = "http://localhost:3000/api/object";
+// const API_BASE_AUTH = "http://localhost:3000/api/auth";
+// const API_BASE_OBJECT = "http://localhost:3000/api/object";
 
 
 export const signupUser = async (email, password, nom, prenom, genre, image) => {
