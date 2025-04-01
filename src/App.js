@@ -7,7 +7,6 @@ import Dashboard from './pages/Dashboard';
 import ArticlesByUser from './pages/ArticlesByUser';
 import Article from './pages/Article';
 import Stuff from './pages/Stuff';
-import Image from './pages/Image';
 import User from './pages/User';
 
 
@@ -24,7 +23,6 @@ function App() {
                 <Route path="/mes-articles/:id" element={<ArticlesByUser/>}/>
                 <Route path="/article/:id" element={<Article />} />
                 <Route path="/stuff" element={<Stuff/>}/>
-                <Route path="/image" element={<Image/>}/>
                 <Route path="/user/:id" element={<User/>}/>
             </Routes>
         </Router>
