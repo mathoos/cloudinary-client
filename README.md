@@ -17,8 +17,8 @@ Système de gestion de contenu qui permet à l'utilisateur connecté d'ajouter d
 ### 👤 Créer un utilisateur
 
 1️⃣ Cliquer sur le bouton **Login**.   
-2️⃣ Cliquer sur le bouton **Nouveau sur la plateforme? Inscris toi !** 
-3️⃣Saisir les informations de l'utilisateur et cliquer sur le bouton **S'inscrire**.  
+2️⃣ Cliquer sur le bouton **Nouveau sur la plateforme? Inscris toi !**  
+3️⃣ Saisir les informations de l'utilisateur et cliquer sur le bouton **S'inscrire**.  
 4️⃣ Si l'inscription a réussi, l'utilisateur est redirigé sur la page **/login**.
 
 ### 🔑 Se connecter au dashboard utilisateur
