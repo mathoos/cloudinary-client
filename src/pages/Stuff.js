@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; 
-import { useSelector } from "react-redux"; 
 import {Link} from "react-router-dom";
 import { getAllObjects } from "../utilities/Server"; 
 
@@ -9,8 +7,6 @@ import './Stuff.scss';
 const Stuff = () => {
     const [things, setThings] = useState([]); 
     const publishedArticles = things.filter(thing => thing.published);
-    const token = useSelector((state) => state.user.token); 
-    const navigate = useNavigate();
 
     const fetchData = async () => {
         try {
@@ -23,13 +19,8 @@ const Stuff = () => {
     };
 
     useEffect(() => {
-        if (!token) {
-            navigate('/');
-        } 
-        else {
-            fetchData(); 
-        }
-    }, [token, navigate]); 
+        fetchData();
+    }, []); 
 
     return (
         <div className="stuff">
