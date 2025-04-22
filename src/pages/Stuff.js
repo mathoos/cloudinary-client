@@ -25,7 +25,7 @@ const Stuff = () => {
     return (
         <div className="stuff">
             <div className="stuff_container">
-                <h2>Toutes les articles</h2>
+                <h2>Tous les articles</h2>
                 <div className="stuff_container-content">
                     {publishedArticles.map(thing => (
                         
