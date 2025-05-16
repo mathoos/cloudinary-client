@@ -46,9 +46,6 @@ const Dashboard = () => {
     };
 
 
-
-
-   // Déclarez `fetchData` et `fetchUserInfo` avec `useCallback`
     const fetchData = useCallback(async () => {
         try {
             const data = await getObjectsByUser(id, token);
@@ -67,7 +64,7 @@ const Dashboard = () => {
         }
     }, [token]);
 
-    // Puis utilisez-les dans `useEffect`
+
     useEffect(() => {
         if (!token) {
             navigate('/');
